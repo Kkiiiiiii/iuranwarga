@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('users_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->enum('period', ['mingguan','bulanan','tahunan']);
+            $table->foreignId('dues_categories_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('petugas');
             $table->timestamps();
         });
     }
