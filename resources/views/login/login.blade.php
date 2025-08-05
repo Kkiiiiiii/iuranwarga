@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
 </head>
 <body  style="background-image: url('{{ asset('assets/foto/bg.jpg') }}'); background-size: cover; background-position:center; object-fit: fill;">
+    @if (session('Message'))
+    <div class="container alert alert-danger alert-dismissible mt-5" style="margin-bottom: -100px">
+        {{ session('Message') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+
+    @endif
     <div class="container d-flex justify-content-center align-items-center mt-5">
         <div class="card shadow-sm mt-5">
           <div class="login-box">
