@@ -47,12 +47,12 @@
                     <div class="d-grid">
                         <button type="submit" class="btn btn-outline-info">Login</button>
                     </div>
-                    <a href="/register" style="text-decoration: none">Belum Punya Akun? Register disini</a>
+                    <a href="/regis" style="text-decoration: none">Belum Punya Akun? Register disini</a>
                 </form>
             </div>
           </div>
         </div>
-
     </div>
 </body>
 </html>
+<script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js')}}"></script>

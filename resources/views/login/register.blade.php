@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Page</title>
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
 </head>
 <body>
  <div class="container d-flex justify-content-center align-items-center mt-5">
@@ -12,7 +14,7 @@
                 <h4 class="text-white mb-0">Register Page</h4>
             </div>
             <div class="card-body">
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="/register" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="username" class="form-label">Name:</label>
@@ -45,11 +47,11 @@
                       <div class="mb-3">
                         <label for="alamat" class="form-label">Alamat:</label>
                         <div class="input-group">
-                            <textarea name="address" id="address"></textarea>
+                            <textarea name="address" id="address" style="width: 100vh"></textarea>
                         </div>
                     </div>
                     <div class="text-center">
-                        <button type="submit">Register</button>
+                        <button type="submit" class="btn btn-sm btn-success">Register</button>
                     </div>
                 </form>
             </div>
@@ -57,3 +59,5 @@
  </div>
 </body>
 </html>
+<script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
