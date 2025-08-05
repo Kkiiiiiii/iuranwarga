@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [halamanutama::class, 'home'])->name('home');
 Route::get("/login", [login::class,"login"])->name("login");
 Route::get("/regis", [login::class,"regis"])->name("regis");
-Route::post("/register", [login::class,"registrasi"])->name("register");
+Route::post("/regis", [login::class,"registrasi"])->name("register");
 Route::post("/auth", [login::class, "auth"])->name('auth');
 
 Route::middleware(['admin'])->group(function() {

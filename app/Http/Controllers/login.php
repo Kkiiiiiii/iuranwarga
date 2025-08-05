@@ -39,9 +39,10 @@ class login extends Controller
         $validation = $request->validate([
             'name' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
-            'no_hp' => 'required|string|max:15',
+            'password' => 'required|string',
+            'nohp' => 'required|string|max:15',
             'address' => 'required|string|max:255',
+            'level' => 'warga',
         ]);
 
         $validation['password'] = bcrypt($validation['password']);

@@ -8,13 +8,22 @@
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
 </head>
 <body>
+     @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $item)
+                        <li>{{ $item }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
  <div class="container d-flex justify-content-center align-items-center mt-5">
     <div class="card shadow-sm">
          <div class="card-header text-center bg-info">
                 <h4 class="text-white mb-0">Register Page</h4>
             </div>
             <div class="card-body">
-                <form action="/register" method="post" enctype="multipart/form-data">
+                <form action="{{ route('register') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="username" class="form-label">Name:</label>
@@ -51,7 +60,7 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-sm btn-success">Register</button>
+                        <button type="submit" class="btn btn-md w-100 btn-success">Register</button>
                     </div>
                 </form>
             </div>
