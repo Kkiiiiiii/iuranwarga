@@ -7,6 +7,8 @@
     <title>Login Page</title>
 </head>
 <body>
-    
+    <input type="text" id="username" name="username" placeholder="username">
+    <br>
+    <input type="password" id="password" name="username">
 </body>
 </html>
