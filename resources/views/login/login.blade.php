@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
 </head>
-<body>
+<body  style="background-image: url('{{ asset('assets/foto/bg.jpg') }}'); background-size: cover; background-position:center; object-fit: fill;">
     <div class="container d-flex justify-content-center align-items-center mt-5">
         <div class="card shadow-sm mt-5">
-          <div class="login-box bg-body-tertiary">
+          <div class="login-box">
             <h4 class="text-center mb-4">Login Page</h4>
             <div class="card-body">
                 <form action="" method="" >
