@@ -28,12 +28,25 @@ class login extends Controller
                 return redirect()->back()->with('Message', 'Login Gagal');
             }
         }
-
-        return redirect()->back()->with('Message', 'Login Gagal');
     }
 
     public function regis(){
         return view("login.register");
+    }
+
+    public function registrasi(Request $request) {
+        $validation = $request->validate([
+            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+            'no_hp' => 'required|string|max:15',
+            'address' => 'required|string|max:255',
+        ]);
+
+        $validation['password'] = bcrypt($validation['password']);
+
+        User::create($validation);
+        return redirect()->route('login')->with('Message', 'Registrasi Berhasil');
     }
 
     public function logout(){
