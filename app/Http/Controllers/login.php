@@ -23,12 +23,21 @@ class login extends Controller
             if(Auth::user()->level == 'admin'){
                 return redirect()->intended(route(admin));
             }elseif(Auth::user()->level == 'warga'){
-                return redirect()->intended(route(warga));
+                return redirect()->intended(route(home));
             }else {
                 return redirect()->back()->with('Message', 'Login Gagal');
             }
         }
 
         return redirect()->back()->with('Message', 'Login Gagal');
+    }
+
+    public function regis(){
+        return view("login.register");
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('login')->with('Message', 'Logout Berhasil');
     }
 }
