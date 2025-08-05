@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+</head>
+<body>
+ <div class="container d-flex justify-content-center align-items-center mt-5">
+    <div class="card shadow-sm">
+         <div class="card-header text-center bg-info">
+                <h4 class="text-white mb-0">Register Page</h4>
+            </div>
+            <div class="card-body">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Name:</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa-solid fa-file-signature"></i></span>
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Masukan nama anda">
+                        </div>
+                    </div>
+                      <div class="mb-3">
+                        <label for="name" class="form-label">Username:</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa-regular fa-user"></i></span>
+                            <input type="text" name="username" class="form-control" id="username" placeholder="Masukan Username anda">
+                        </div>
+                    </div>
+                      <div class="mb-3">
+                        <label for="password" class="form-label">Password:</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa-regular fa-user"></i></span>
+                            <input type="password" name="password" class="form-control" id="username" placeholder="Masukan Password anda">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="nohp" class="form-label">Nohp:</label>
+                      <div class="input-group">
+                          <span class="input-group-text"><i class="fa-solid fa-square-phone"></i></span>
+                          <input type="number" name="nohp" class="form-control" id="nohp" placeholder="Masukan nohp anda">
+                      </div>
+                  </div>
+                      <div class="mb-3">
+                        <label for="alamat" class="form-label">Alamat:</label>
+                        <div class="input-group">
+                            <textarea name="address" id="address"></textarea>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit">Register</button>
+                    </div>
+                </form>
+            </div>
+    </div>
+ </div>
+</body>
+</html>
