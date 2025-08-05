@@ -44,4 +44,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function dues_member()
+    {
+        return $this->hasOne(dues_members::class, 'users_id');
+    }
 }
