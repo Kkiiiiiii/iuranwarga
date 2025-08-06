@@ -12,7 +12,7 @@
 <body>
     <header class="navbar navbar-expand-sm bg-utama">
         <div class="container">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand " href="#">Navbar</a>
             <button
                 class="navbar-toggler d-lg-none"
                 type="button"
@@ -25,9 +25,9 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
-                <form class="d-flex my-2 my-lg-0">
+                <form class="d-flex my-2 my-lg-0 w-100">
                     <input
-                        class="form-control me-sm-2"
+                        class="form-control me-sm-2 "
                         type="text"
                         placeholder="Search"
                     />
@@ -54,22 +54,36 @@
                           </div>
                         </div>
                     </div>
-                    <div class="container bg-danger mt-5">
-                        <div class="row d-flex align-items-center p-1">
-                            <div class="col-2">
-                                <i class="fa fa-dashboard" aria-hidden="true"></i>
-                            </div>
-                            <div class="col-10">
-                                <p>Dashboard</p>
-                            </div>
-                        </div>
-                        <a href="{{ route('admin.wargaTab') }}">
-                            <div class="row d-flex align-items-center p-1">
-                                <div class="col-2">
+                    <div class="container row-cols-sm-auto mt-4">
+                        <a href="{{ route('admin') }}" style="text-decoration: none">
+                            <div class="d-flex  gap-2 text-black">
+                                <span>
                                     <i class="fa fa-dashboard" aria-hidden="true"></i>
-                                </div>
-                                <div class="col-10">
+                                </span>
+                                <div class="bg-utama">
                                     <p>Dashboard</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="{{ route('admin.wargaTab') }}" style="text-decoration: none">
+                            <div class="d-flex mt-auto gap-2 text-black">
+                                <span>
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                </span>
+                                <div class="">
+                                    <p>Users</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="" style="text-decoration: none">
+                            <div class="d-flex mt-auto gap-2 text-black">
+                                <span>
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                </span>
+                                <div class="">
+                                    <p>Payment</p>
                                 </div>
                             </div>
                         </a>

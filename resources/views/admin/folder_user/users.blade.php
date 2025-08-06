@@ -1,6 +1,7 @@
 @extends('admin.layout')
 @section('content')
 <div class="container">
+    <a href="{{ route('admin.wargaCreate') }}" class="btn btn-sm btn-info mt-5 align-items-end">Tambah Data Warga</a>
     <table class="table table-striped table-hover">
             <thead class="table">
                 <tr>
@@ -9,7 +10,6 @@
                     <th>Username</th>
                     <th>Nohp</th>
                     <th>Address</th>
-                    <th>Period</th>
                     <th>Petugas</th>
                     <th>Nominal</th>
                     <th>Status</th>
@@ -19,13 +19,12 @@
             @foreach ($warga as $item)
             <tbody>
                 <tr>
-                <td>1</td>
-                <td>Kii123</td>
-                <td>Kii</td>
-                <td>9857847582475</td>
-                <td>spa</td>
-                <td>Mingguan</td>
-                <td>Admin</td>
+                <td>{{ $loop->iteration}}</td>
+                <td>{{ $item->name}}</td>
+                <td>{{ $item->username }}</td>
+                <td>{{ $item->nohp }}</td>
+                <td>{{ $item->address }}</td>
+                <td>{{ $item->level }}</td>
                 <td class="text-success">5000</td>
                 <td class="text-primary">Sudah Bayar</td>
                 <td>
