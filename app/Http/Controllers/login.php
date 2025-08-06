@@ -32,11 +32,12 @@ class login extends Controller
         return redirect()->back()->with('Message', 'Login Gagal');
     }
 
-    public function regis(){
-        return view("login.register");
+    public function create(){
+        $data['warga'] = User::all();
+        return view("admin.folder_user.tambah_users", $data);
     }
 
-    public function registrasi(Request $request) {
+    public function store(Request $request) {
         $validation = $request->validate([
             'name' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users',

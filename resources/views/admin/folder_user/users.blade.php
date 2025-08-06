@@ -16,7 +16,7 @@
                     <th>Aksi</th>
                 </tr>
             </thead>
-            @foreach ($Warga as $item)
+            @foreach ($warga as $item)
             <tbody>
                 <tr>
                 <td>1</td>

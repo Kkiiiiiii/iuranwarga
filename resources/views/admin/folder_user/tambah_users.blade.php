@@ -59,8 +59,20 @@
                 </div>
             </div>
         </div>
-        <div class="mb-3 mt-3">
-            <input type="submit" class="btn btn-sm btn-info d-grid" value="SIMPAN">
+          <div class="mb-3 mt-2">
+            <div class="input-group">
+                <label for="level" class="form-label">Alamat Warga:</label>
+                <select name="level" id="level">
+                    <option value="admin" {{ $warga->level == 'admin' ? 'selected' : '' }}>Admin</option>
+                    <option value="warga" {{ $warga->level == 'warga' ? 'selected' : '' }}>Warga</option>
+                </select>
+                <div class="input-group-text">
+                    <span><i class="fa-solid fa-database"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3 mt-3 text-center">
+            <input type="submit" class="btn btn-sm btn-info w-100" value="SIMPAN">
         </div>
     </form>
 </div>
