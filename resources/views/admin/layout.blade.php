@@ -6,12 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
 </head>
 <body>
-    <nav
-        class="navbar navbar-expand-sm navbar-light bg-light"
-    >
+    <header class="navbar navbar-expand-sm bg-utama">
         <div class="container">
             <a class="navbar-brand" href="#">Navbar</a>
             <button
@@ -26,39 +25,6 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
-                <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#" aria-current="page"
-                            >Home
-                            <span class="visually-hidden">(current)</span></a
-                        >
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a
-                            class="nav-link dropdown-toggle"
-                            href="#"
-                            id="dropdownId"
-                            data-bs-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                            >Dropdown</a
-                        >
-                        <div
-                            class="dropdown-menu"
-                            aria-labelledby="dropdownId"
-                        >
-                            <a class="dropdown-item" href="#"
-                                >Action 1</a
-                            >
-                            <a class="dropdown-item" href="#"
-                                >Action 2</a
-                            >
-                        </div>
-                    </li>
-                </ul>
                 <form class="d-flex my-2 my-lg-0">
                     <input
                         class="form-control me-sm-2"
@@ -74,9 +40,27 @@
                 </form>
             </div>
         </div>
-    </nav>
-
-    @yield('content')
+    </header>
+    <div class="row" style="height: 100vh;">
+        <div class="col-sm-2 bg-utama">
+            <nav>
+                <div class="container">
+                    <div class="container-fluid d-flex bg-danger justify-content-center" style="height: 200px">
+                        <div class="container">
+                            <div class="container-fluid mt-4">
+                                <img src="{{ asset('assets/foto/profile.jpg') }}" alt="" style="width: 100%" class="rounded-circle">
+                            </div>
+                            <div class="bg-white bg-light mt-3 text-center">Idoy</div>
+                        </div>
+                    </div>
+                    <div class="">p</div>
+                </div>
+            </nav>
+        </div>
+        <div class="col-sm-10 bg-primary">
+            @yield('content')
+        </div>
+    </div>
 </body>
 </html>
 <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
