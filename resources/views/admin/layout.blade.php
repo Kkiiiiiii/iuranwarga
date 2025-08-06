@@ -63,7 +63,7 @@
                                 <p>Dashboard</p>
                             </div>
                         </div>
-                        <a href="{{ route('admin.wargaCreate') }}">
+                        <a href="{{ route('admin.wargaTab') }}">
                             <div class="row d-flex align-items-center p-1">
                                 <div class="col-2">
                                     <i class="fa fa-dashboard" aria-hidden="true"></i>

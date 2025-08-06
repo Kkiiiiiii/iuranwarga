@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class halamanutama extends Controller
@@ -14,6 +15,7 @@ class halamanutama extends Controller
 
     public function admin()
     {
-        return view('admin.dashboard');
+        $data['user'] = User::all();
+        return view('admin.dashboard', $data);
     }
 }

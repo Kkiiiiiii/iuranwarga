@@ -53,7 +53,7 @@
          <div class="mb-3 mt-2">
             <div class="input-group">
                 <label for="Address" class="form-label">Alamat Warga:</label>
-                <input type="Address" class="form-control" id="Address" placeholder="Masukan Alamat" name="Address">
+                <input type="Address" class="form-control" id="Address" placeholder="Masukan Alamat" name="address">
                 <div class="input-group-text">
                     <span><i class="fa-solid fa-map-pin"></i></span>
                 </div>
@@ -63,8 +63,8 @@
             <div class="input-group">
                 <label for="level" class="form-label">Alamat Warga:</label>
                 <select name="level" id="level">
-                    <option value="admin" {{ $warga->level == 'admin' ? 'selected' : '' }}>Admin</option>
-                    <option value="warga" {{ $warga->level == 'warga' ? 'selected' : '' }}>Warga</option>
+                    <option value="admin">Admin</option>
+                    <option value="warga">Warga</option>
                 </select>
                 <div class="input-group-text">
                     <span><i class="fa-solid fa-database"></i></span>
