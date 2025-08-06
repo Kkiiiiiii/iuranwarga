@@ -30,7 +30,6 @@ class login extends Controller
             }
         }
         return redirect()->back()->with('Message', 'Login Gagal');
-
     }
 
     public function regis(){
