@@ -42,7 +42,7 @@
                       <div class="mb-3">
                         <label for="password" class="form-label">Password:</label>
                         <div class="input-group">
-                            <span class="input-group-text"><i class="fa-regular fa-user"></i></span>
+                            <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
                             <input type="password" name="password" class="form-control" id="username" placeholder="Masukan Password anda">
                         </div>
                     </div>
@@ -54,8 +54,9 @@
                       </div>
                   </div>
                       <div class="mb-3">
-                        <label for="alamat" class="form-label">Alamat:</label>
+                        <label for="address" class="form-label">Alamat:</label>
                         <div class="input-group">
+                            <span class="input-group-text"><i class="fa-solid fa-map-pin"></i></span>
                             <textarea name="address" id="address" style="width: 100vh"></textarea>
                         </div>
                     </div>

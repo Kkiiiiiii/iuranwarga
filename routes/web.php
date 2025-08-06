@@ -12,9 +12,19 @@ Route::post("/regis", [login::class,"registrasi"])->name("register");
 Route::post("/auth", [login::class, "auth"])->name('auth');
 
 Route::middleware(['admin'])->group(function() {
-    Route::get('/admin', [halamanutama::class, 'admin'])->name('admin');    
+    Route::get('/admin', [halamanutama::class, 'admin'])->name('admin');
+    Route::get('/admin/warga', [halamanutama::class,'users'])->name('admin.wargaTab');
+    Route::get('/admin/warga/create', [halamanutama::class,'create'])->name('admin.wargaCreate');
+    Route::post('/admin/warga/store', [halamanutama::class,'store'])->name('admin.wargaStore');
+    Route::get('/admin/warga/edit/{id}', [halamanutama::class,'edit'])->name('warga-edit');
+    Route::post('/admin/warga/edit/{id}', [halamanutama::class,'update'])->name('warga-update');
+    Route::get('/admin/warga/delete/{id}', [halamanutama::class,'delete'])->name('warga-delete');
+
+
+
+
 });
 
 Route::middleware(['warga'])->group(function(){
-    
+
 });

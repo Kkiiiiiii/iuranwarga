@@ -32,15 +32,19 @@
           </div>
         </div>
     </div>
-    <div class="table">
+    <div class="table mt-5">
         <table class="table table-striped table-hover">
-            <thead class="table ">
+            <thead class="table">
                 <tr>
                     <th>No</th>
                     <th>Nama</th>
                     <th>Username</th>
                     <th>Nohp</th>
                     <th>Address</th>
+                    <th>Period</th>
+                    <th>Petugas</th>
+                    <th>Nominal</th>
+                    <th>Status</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -51,6 +55,10 @@
                 <td>Kii</td>
                 <td>9857847582475</td>
                 <td>spa</td>
+                <td>Mingguan</td>
+                <td>Admin</td>
+                <td class="text-success">5000</td>
+                <td class="text-primary">Sudah Bayar</td>
                 <td>
                     <a href="" class="btn btn-sm btn-warning">Edit</a>
                     <a href="" class="btn btn-sm btn-danger">Delete</a>
