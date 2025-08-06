@@ -55,19 +55,29 @@
                         </div>
                     </div>
                     <div class="container bg-danger mt-5">
-                        <div class="row">
+                        <div class="row d-flex align-items-center p-1">
                             <div class="col-2">
-                                <i class="fa fa-home" aria-hidden="true"></i>
+                                <i class="fa fa-dashboard" aria-hidden="true"></i>
                             </div>
                             <div class="col-10">
-                                <p>Home</p>
+                                <p>Dashboard</p>
                             </div>
                         </div>
+                        <a href="{{ route('admin.wargaCreate') }}">
+                            <div class="row d-flex align-items-center p-1">
+                                <div class="col-2">
+                                    <i class="fa fa-dashboard" aria-hidden="true"></i>
+                                </div>
+                                <div class="col-10">
+                                    <p>Dashboard</p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </nav>
         </div>
-        <div class="col-sm-10 bg-primary">
+        <div class="col-sm-10">
             @yield('content')
         </div>
     </div>

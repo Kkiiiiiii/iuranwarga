@@ -47,7 +47,6 @@
                     <div class="d-grid">
                         <button type="submit" class="btn btn-outline-info">Login</button>
                     </div>
-                    <a href="/regis" style="text-decoration: none">Belum Punya Akun? Register disini</a>
                 </form>
             </div>
           </div>
