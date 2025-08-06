@@ -16,5 +16,5 @@ Route::middleware(['admin'])->group(function() {
 });
 
 Route::middleware(['warga'])->group(function(){
-
+    
 });

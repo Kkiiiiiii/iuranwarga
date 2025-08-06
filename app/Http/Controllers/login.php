@@ -29,6 +29,8 @@ class login extends Controller
                 return redirect()->back()->with('Message', 'Login Gagal');
             }
         }
+        return redirect()->back()->with('Message', 'Login Gagal');
+
     }
 
     public function regis(){
@@ -42,7 +44,7 @@ class login extends Controller
             'password' => 'required|string',
             'nohp' => 'required|string|max:15',
             'address' => 'required|string|max:255',
-            'level' => 'warga',
+            'level' => 'required|string',
         ]);
 
         $validation['password'] = bcrypt($validation['password']);

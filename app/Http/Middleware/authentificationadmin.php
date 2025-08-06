@@ -16,10 +16,10 @@ class authentificationadmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->level == 'admin'){
+        if (Auth::check()){
             return $next($request);
         } else {
-            return redirect(route('login'));
+            return redirect()->route('login');
         }
     }
 }
