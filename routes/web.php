@@ -12,7 +12,7 @@ Route::post("/regis", [login::class,"registrasi"])->name("register");
 Route::post("/auth", [login::class, "auth"])->name('auth');
 
 Route::middleware(['admin'])->group(function() {
-    Route::get('/admin', [halamanutama::class, 'admin'])->name('admin');
+    Route::get('/admin', [halamanutama::class, 'admin'])->name('admin');    
 });
 
 Route::middleware(['warga'])->group(function(){

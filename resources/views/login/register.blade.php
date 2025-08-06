@@ -69,4 +69,6 @@
 </body>
 </html>
 <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{ asset('assets/fontawesome/js/fontawesome.js') }}"></script>
+
 
