@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             'password'=> bcrypt('1234'),
             'nohp'=> '0876543524312',
             'address' => 'Tasik',
+            'level' => 'admin'
         ]);
 
           User::create([
@@ -34,6 +35,7 @@ class DatabaseSeeder extends Seeder
             'password'=> bcrypt('123'),
             'nohp'=> '0876543524313',
             'address' => 'Ciamis',
+            'level' => 'warga'
         ]);
 
         dues_category::create([
