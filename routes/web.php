@@ -12,7 +12,7 @@ Route::post("/auth", [login::class, "auth"])->name('auth');
 
 Route::middleware(['admin'])->group(function() {
     Route::get('/admin', [halamanutama::class, 'admin'])->name('admin');
-    Route::get('/admin/warga', [halamanutama::class,'users'])->name('admin.wargaTab');
+    Route::get('/admin/warga', [AdminUsercontroller::class,'view'])->name('admin.wargaTab');
     Route::get('/admin/warga/create', [AdminUsercontroller::class,'create'])->name('admin.wargaCreate');
     Route::post('/admin/warga/store', [AdminUsercontroller::class,'store'])->name('admin.wargaStore');
     Route::get('/admin/warga/edit/{id}', [halamanutama::class,'edit'])->name('warga-edit');

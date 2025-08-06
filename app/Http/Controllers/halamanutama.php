@@ -15,7 +15,6 @@ class halamanutama extends Controller
 
     public function admin()
     {
-        $data['user'] = User::all();
-        return view('admin.dashboard', $data);
+        return view('admin.dashboard');
     }
 }

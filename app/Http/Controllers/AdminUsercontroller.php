@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class AdminUsercontroller extends Controller
 {
+    public function view(){
+        $data['warga'] = User::all();
+        return view('admin.folder_user.users', $data);
+    }
+
     public function create(){
         $data['warga'] = User::all();
         return view("admin.folder_user.tambah_users", $data);

@@ -30,7 +30,7 @@
                 <td class="text-primary">Sudah Bayar</td>
                 <td>
                     <a href="{{ route('warga-edit', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-warning">Edit</a>
-                    <a href="{{ route('warga-delete') }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin data warga ({{ $item->name }} ini dihapus?)')">Delete</a>
+                    <a href="{{ route('warga-delete', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin data warga ({{ $item->name }} ini dihapus?)')">Delete</a>
                 </td>
                 </tr>
             </tbody>
