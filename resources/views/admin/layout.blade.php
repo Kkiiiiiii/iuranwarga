@@ -44,16 +44,26 @@
     <div class="row" style="height: 100vh;">
         <div class="col-sm-2 bg-utama">
             <nav>
-                <div class="container">
-                    <div class="container-fluid d-flex bg-danger justify-content-center" style="height: 200px">
-                        <div class="container">
-                            <div class="container-fluid mt-4">
-                                <img src="{{ asset('assets/foto/profile.jpg') }}" alt="" style="width: 100%" class="rounded-circle">
-                            </div>
-                            <div class="bg-white bg-light mt-3 text-center">Idoy</div>
+                <div class="container mt-5">
+                    <div class="container-fluid d-flex justify-content-center border rounded-2">
+                        <div class="container-fluid card bg-utama m-4 border-0" style="width:18rem;">
+                          <img src="{{ asset('assets/foto/profile.jpg') }}" class="rounded-circle">
+                          <div class="card-body">
+                            <h5 class="card-title text-bold text-center">Idoy</h5>
+                            <h6 class="card-subtitle mb-2 text-muted text-center">Admin</h6>
+                          </div>
                         </div>
                     </div>
-                    <div class="">p</div>
+                    <div class="container bg-danger mt-5">
+                        <div class="row">
+                            <div class="col-2">
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-10">
+                                <p>Home</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </nav>
         </div>

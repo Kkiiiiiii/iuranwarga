@@ -1,31 +1,7 @@
-.ma-2{
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-.grid-content{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-}
-
 .bg-utama{
     background-color: #8EACCD;
 }
 
-.bg-kedua{
-    background-color: gray   ;
-}
-
-.mt-10{
-    margin-top: 117px;
-    margin-bottom: 150px;
-}
-
-.beli{
-    background-color: rebeccapurple;
-    width: 500px;
-}
-
-.bg-ijo{
-    background-color: green;
+.text-bold{
+    font-weight: bold;
 }
