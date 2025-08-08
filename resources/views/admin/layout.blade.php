@@ -80,7 +80,7 @@
                             </div>
                         </a>
 
-                        <a href="" style="text-decoration: none">
+                        <a href="{{ route('admin.dues_category') }}" style="text-decoration: none">
                             <div class="d-flex mt-auto gap-2 text-black">
                                 <span>
                                     <i class="fa fa-inbox" aria-hidden="true"></i>
@@ -91,7 +91,7 @@
                             </div>
                         </a>
 
-                        <a href="" style="text-decoration: none">
+                        <a href="{{ route('admin.dues_member') }}" style="text-decoration: none">
                             <div class="d-flex mt-auto gap-2 text-black">
                                 <span>
                                     <i class="fa fa-user-circle" aria-hidden="true"></i>
