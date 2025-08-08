@@ -60,7 +60,7 @@
             <label for="level" class="form-label">Level Akses</label>
             <div class="input-group">
                 <select class="form-select" name="level" id="level">
-                    <option value="admin">Admin</option>
+                    <option value="admin">officer</option>
                     <option value="warga">Warga</option>
                 </select>
                 <span class="input-group-text"><i class="fa-solid fa-database"></i></span>
