@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\officer;
 use App\Models\User;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
@@ -22,6 +23,7 @@ class AdminUsercontroller extends Controller
 
     public function store(Request $request) {
         $validation = $request->validate([
+            'id' => 'nullable',
             'name' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users',
             'password' => 'required|string',
@@ -30,9 +32,11 @@ class AdminUsercontroller extends Controller
             'level' => 'required|string',
         ]);
 
+        $user = User::create($validation);
         $validation['password'] = bcrypt($validation['password']);
-
-        User::create($validation);
+        if($validation['level'] == 'admin'){
+            officer::create(['users_id' => $user->id]);
+        }
         return redirect()->route('admin.wargaTab')->with('Message', 'Registrasi Berhasil');
     }
 
