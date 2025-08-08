@@ -38,6 +38,9 @@
                         Search
                     </button>
                 </form>
+                @if (Auth::user())
+                <a href="{{ route('logout') }}" class="btn btn-danger card-title text-bold text-center align-items-center" style="margin-left: 12px">Logout</a>
+                @endif
             </div>
         </div>
     </header>
@@ -45,6 +48,7 @@
         <div class="col-sm-2 bg-utama">
             <nav>
                 <div class="container mt-5">
+                    @if (Auth::user())
                     <div class="container-fluid d-flex justify-content-center border rounded-2">
                         <div class="container-fluid card bg-utama m-4 border-0" style="width:18rem;">
                           <img src="{{ asset('assets/foto/profile.jpg') }}" class="rounded-circle">
@@ -54,6 +58,16 @@
                           </div>
                         </div>
                     </div>
+                    @else
+                    <div class="container-fluid d-flex justify-content-center border rounded-2">
+                        <div class="container-fluid card bg-utama m-4 border-0" style="width:18rem;">
+                          <img src="{{ asset('assets/foto/profile.jpg') }}" class="rounded-circle">
+                          <div class="card-body">
+                            <a href="{{ route('login') }}" class="btn btn-info card-title text-bold text-center align-items-center">Sign In</a>
+                          </div>
+                        </div>
+                    </div>
+                    @endif
                     <div class="container row-cols-sm-auto mt-4">
                         <a href="{{ route('admin') }}" style="text-decoration: none">
                             <div class="d-flex  gap-2 text-black">

@@ -38,6 +38,9 @@
                         Search
                     </button>
                 </form>
+                @if (Auth::user())
+                <a href="{{ route('logout') }}" class="btn btn-danger card-title text-bold text-center align-items-center" style="margin-left: 12px">Logout</a>
+                @endif
             </div>
         </div>
     </header>

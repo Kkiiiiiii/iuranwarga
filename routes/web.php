@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [halamanutama::class, 'home'])->name('home');
 Route::get("/login", [login::class,"login"])->name("login");
 Route::post("/auth", [login::class, "auth"])->name('auth');
+Route::get("/logout", [login::class, "logout"])->name(('logout'));
 
 Route::middleware(['admin'])->group(function() {
     Route::get('/admin', [halamanutama::class, 'admin'])->name('admin');
