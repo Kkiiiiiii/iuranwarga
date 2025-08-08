@@ -52,4 +52,14 @@ class User extends Authenticatable
     {
         return $this->hasOne(dues_members::class, 'users_id');
     }
+
+    public function officer()
+    {
+        return $this->hasOne(officer::class, 'users_id');
+    }
+
+    public function dues_category()
+    {
+        return $this->hasMany(dues_category::class, 'users_id');
+    }
 }

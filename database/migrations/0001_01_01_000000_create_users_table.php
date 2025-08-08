@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('nohp');
             $table->string('address');
-            $table->enum('level', ['admin','warga'])->default('warga');
+            $table->enum('level', ['admin', 'officer', 'warga'])->default('warga');
             $table->rememberToken();
             $table->timestamps();
         });
