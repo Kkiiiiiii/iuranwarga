@@ -24,6 +24,9 @@ Route::middleware(['admin'])->group(function() {
     Route::get('/admin/warga/delete/{id}', [AdminUsercontroller::class,'delete'])->name('warga-delete');
 
     Route::get('/admin/dues_category', [DuesCategoryController::class,'view'])->name('admin.dues_category');
+    Route::get('/admin/dues_category/create', [DuesCategoryController::class,'create'])->name('admin.dues_categoryCreate');
+    Route::post('/admin/dues_category/store', [DuesCategoryController::class,'store'])->name('admin.dues_categoryStore');
+
 
 
     Route::get('/admin/dues_member', [DuesMemberController::class,'view'])->name('admin.dues_member');
