@@ -83,21 +83,10 @@
                         <a href="{{ route('admin.wargaTab') }}" style="text-decoration: none">
                             <div class="d-flex mt-auto gap-2 text-black">
                                 <span>
-                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    <i class="fa-solid fa-clock-rotate-left"></i>
                                 </span>
                                 <div class="">
-                                    <p>Users</p>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="" style="text-decoration: none">
-                            <div class="d-flex mt-auto gap-2 text-black">
-                                <span>
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                </span>
-                                <div class="">
-                                    <p>Payment</p>
+                                    <p>History</p>
                                 </div>
                             </div>
                         </a>

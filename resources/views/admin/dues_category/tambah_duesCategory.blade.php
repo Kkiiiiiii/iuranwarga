@@ -17,21 +17,9 @@
         @csrf
 
         <div class="mb-3">
-            <label for="id" class="form-label">ID</label>
-            <div class="input-group">
-                <input type="number" class="form-control" id="id" name="id" placeholder="Masukkan ID">
-                <span class="input-group-text"><i class="fa-solid fa-file-signature"></i></span>
-            </div>
-        </div>
-
-        <div class="mb-3">
             <label for="username" class="form-label">Period</label>
             <div class="input-group">
-                    <select class="form-select" name="period" id="period">
-                    <option value="mingguan">Mingguan</option>
-                    <option value="bulanan">Bulanan</option>
-                    <option value="tahunan">Tahunan</option>
-                </select>
+                <input type="text" class="form-control" id="period" name='period' placeholder='Masukkan periode'>
                 <span class="input-group-text"><i class="fa-solid fa-database"></i></span>
             </div>
         </div>

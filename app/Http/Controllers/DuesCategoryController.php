@@ -23,7 +23,6 @@ class DuesCategoryController extends Controller
     public function store(Request $request)
     {
          $validation = $request->validate([
-            'id' => 'nullable',
             'period' => 'required|string|max:255',
             'nominal' => 'required|int',
             'status' => 'required|string',

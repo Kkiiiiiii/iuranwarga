@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('dues_categories', function (Blueprint $table) {
             $table->id();
-            $table->enum('period', ['mingguan','bulanan','tahunan']);
+            $table->string('period');
             $table->integer('nominal');
-            $table->enum('status', ['sudah bayar', 'belum bayar']);
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }

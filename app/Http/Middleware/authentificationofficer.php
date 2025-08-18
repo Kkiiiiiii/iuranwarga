@@ -2,12 +2,12 @@
 
 namespace App\Http\Middleware;
 
+use Auth;
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class authentificationadmin
+class authentificationofficer
 {
     /**
      * Handle an incoming request.
@@ -16,14 +16,15 @@ class authentificationadmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check()){
-            if (Auth::user()->level == 'admin') {
+        if (Auth::check()) {
+            if (Auth::user()->level == 'officer') {
                 return $next($request);
             }else
             {
                 return redirect()->route('home');
             }
-        } else {
+        }else
+        {
             return redirect()->route('login');
         }
     }

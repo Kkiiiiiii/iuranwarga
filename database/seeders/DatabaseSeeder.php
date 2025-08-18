@@ -52,14 +52,14 @@ class DatabaseSeeder extends Seeder
             'id'=> 1,
             'period' => 'mingguan',
             'nominal' => 5000,
-            'status'=> 'sudah bayar',
+            'status'=> 1,
         ]);
 
         dues_category::create([
             'id'=> 2,
             'period' => 'bulanan',
             'nominal' => 15000,
-            'status'=> 'sudah bayar',
+            'status'=> 1,
         ]);
 
         dues_members::create([

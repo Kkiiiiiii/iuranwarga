@@ -11,9 +11,7 @@
                 <th>Username</th>
                 <th>Nohp</th>
                 <th>Address</th>
-                <th>Petugas</th>
-                <th>Nominal</th>
-                <th>Status</th>
+                <th>Level</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -30,9 +28,8 @@
             <td>{{ $item->nohp }}</td>
             <td>{{ $item->address }}</td>
             <td>{{ $item->level }}</td>
-            <td class="text-success">5000</td>
-            <td class="text-primary">Sudah Bayar</td>
             <td>
+                <a href="{{ route('warga-edit', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-success" onclick="return confirm('Yakin memberhentikan {{ $item->name }} dari petugas')">Berhentikan Petugas</a>
                 <a href="{{ route('warga-edit', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-warning">Edit</a>
                 <a href="{{ route('warga-delete', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin data warga ({{ $item->name }} ini dihapus?)')">Delete</a>
             </td>
@@ -50,9 +47,7 @@
                 <th>Username</th>
                 <th>Nohp</th>
                 <th>Address</th>
-                <th>Petugas</th>
-                <th>Nominal</th>
-                <th>Status</th>
+                <th>Level</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -69,9 +64,8 @@
             <td>{{ $item->nohp }}</td>
             <td>{{ $item->address }}</td>
             <td>{{ $item->level }}</td>
-            <td class="text-success">5000</td>
-            <td class="text-primary">Sudah Bayar</td>
             <td>
+                <a href="{{ route('warga-edit', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-success" onclick="return confirm('Yakin menjadikan {{ $item->name }} sebagai petugas')">Jadikan Petugas</a>
                 <a href="{{ route('warga-edit', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-warning">Edit</a>
                 <a href="{{ route('warga-delete', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin data warga ({{ $item->name }} ini dihapus?)')">Delete</a>
             </td>

@@ -55,18 +55,6 @@
                 <span class="input-group-text"><i class="fa-solid fa-map-pin"></i></span>
             </div>
         </div>
-
-        <div class="mb-3">
-            <label for="level" class="form-label">Level Akses</label>
-            <div class="input-group">
-                <select class="form-select" name="level" id="level">
-                    <option value="admin">officer</option>
-                    <option value="warga">Warga</option>
-                </select>
-                <span class="input-group-text"><i class="fa-solid fa-database"></i></span>
-            </div>
-        </div>
-
         <div class="mb-3 text-center">
             <button type="submit" class="btn btn-info w-100 btn-sm">SIMPAN</button>
         </div>

@@ -16,8 +16,13 @@ class authentificationwarga
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::check() && Auth::user()->level == 'warga'){
-            return $next($request);
+        if(Auth::check()){
+            if (Auth::user()->level == 'warga') {
+                return $next($request);
+            }else
+            {
+                return redirect()->route('home');
+            }
         }else {
             return redirect()->route('login');
         }
