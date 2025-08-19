@@ -53,8 +53,8 @@
                         <div class="container-fluid card bg-utama m-4 border-0" style="width:18rem;">
                           <img src="{{ asset('assets/foto/profile.jpg') }}" class="rounded-circle">
                           <div class="card-body">
-                            <h5 class="card-title text-bold text-center">Idoy</h5>
-                            <h6 class="card-subtitle mb-2 text-muted text-center">Admin</h6>
+                            <h5 class="card-title text-bold text-center">{{ Auth::user()->name }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted text-center">{{ Auth::user()->level }}</h6>
                           </div>
                         </div>
                     </div>

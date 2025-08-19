@@ -25,8 +25,10 @@ Route::middleware(['admin'])->group(function() {
 
     Route::get('/admin/dues_category', [DuesCategoryController::class,'view'])->name('admin.dues_category');
     Route::get('/admin/dues_category/create', [DuesCategoryController::class,'create'])->name('admin.dues_categoryCreate');
-    Route::post('/admin/dues_category/store', [DuesCategoryController::class,'store'])->name('admin.dues_categoryStore');
-
+    Route::post('/admin/dues_category/create', [DuesCategoryController::class,'store'])->name('admin.dues_categoryStore');
+    Route::get('/admin/dues_category/edit/{id}', [DuesCategoryController::class,'edit'])->name('admin.dues_categoryEdit');
+    Route::post('/admin/dues_category/edit/{id}', [DuesCategoryController::class,'update'])->name('admin.dues_categoryUpdate');
+    Route::get('/admin/dues_category/delete/{id}', [DuesCategoryController::class,'delete'])->name('admin.dues_categoryDelete');
 
 
     Route::get('/admin/dues_member', [DuesMemberController::class,'view'])->name('admin.dues_member');
