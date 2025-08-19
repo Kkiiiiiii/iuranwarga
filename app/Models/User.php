@@ -48,9 +48,9 @@ class User extends Authenticatable
         ];
     }
 
-    public function dues_member()
+    public function duesMember()
     {
-        return $this->hasOne(dues_members::class, 'users_id');
+        return $this->hasOne(DuesMembers::class, 'users_id');
     }
 
     public function officer()
@@ -58,8 +58,8 @@ class User extends Authenticatable
         return $this->hasOne(officer::class, 'users_id');
     }
 
-    public function dues_category()
+    public function payment()
     {
-        return $this->hasMany(dues_category::class, 'users_id');
+        return $this->hasMany(Payment::class, 'users_id');
     }
 }

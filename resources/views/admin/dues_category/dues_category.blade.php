@@ -2,13 +2,23 @@
 @section('content')
 <div class="container mt-5">
     @if(session('success'))
-    <div class="alert alert-success">
+    <div class="alert alert-success alert-dismissible">
         {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    @elseif(session('danger'))
+    <div class="alert alert-danger alert-dismissible">
+        {{ session('danger') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
     @endif
 
-    <a href="{{ route('admin.dues_categoryCreate') }}" class="btn btn-sm btn-info mt-5 align-items-end">Tambah Data Kategori</a>
-    <p>Data Petugas</p>
+    @php
+        $no = 1;
+    @endphp
+
+    <a href="{{ route('admin.dues_categoryCreate') }}" class="btn btn-sm btn-info align-items-end">Tambah Data Kategori</a>
+    <p>Data Kategori</p>
     <table class="table table-striped table-hover">
         <thead class="table">
             <tr>
@@ -20,9 +30,9 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($dues_category as $item)
+            @foreach ($duesCategory as $item)
             <tr>
-            <td>{{ $item->id }}</td>
+            <td>{{ $no++ }}</td>
             <td>{{ $item->period }}</td>
             <td class="text-success">Rp.{{ $item->nominal }}</td>
             <td>
@@ -41,5 +51,4 @@
     </tbody>
     </table>
 </div>
-
 @endsection

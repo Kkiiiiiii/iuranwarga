@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\dues_category;
+use App\Models\DuesCategory;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -12,13 +12,13 @@ class DuesCategoryController extends Controller
     //
     public function view()
     {
-        $dues_category = dues_category::all();
-        return view('admin.dues_category.dues_category', compact('dues_category'));
+        $data['duesCategory'] = DuesCategory::all();
+        return view('admin.dues_category.dues_category', $data);
     }
 
     public function create()
     {
-       $data['Category'] = dues_category::all();
+       $data['Category'] = DuesCategory::all();
        return view("admin.dues_category.tambah_duesCategory", $data);
     }
 
@@ -30,8 +30,8 @@ class DuesCategoryController extends Controller
             'status' => 'required|string',
         ]);
 
-        dues_category::create($validation);
-        return redirect()->route('admin.dues_category')->with('Message', 'Tambah dues_Category Berhasil');
+        DuesCategory::create($validation);
+        return redirect()->route('admin.dues_category')->with('success', 'Berhasil menambah data dues_category');
     }
 
     public function edit(String $id){
@@ -41,7 +41,7 @@ class DuesCategoryController extends Controller
             return redirect()->back()->with('Danger', $e->getMessage());
         }
         
-        $data['Category'] = dues_category::find($id);
+        $data['Category'] = DuesCategory::find($id);
         return view('admin.dues_category.edit_duesCategory', $data);
     }
 
@@ -58,7 +58,7 @@ class DuesCategoryController extends Controller
             'status' => 'required|string',
         ]);
 
-        $category = dues_category::find($id);
+        $category = DuesCategory::find($id);
         $category->update($validasi);
         return redirect(route('admin.dues_category'))->with('success', 'Data berhasil diubah');
     }
@@ -71,7 +71,7 @@ class DuesCategoryController extends Controller
             return redirect()->back()->with('danger', $e->getMessage());
         }
 
-        $Category = dues_category::find($id);
+        $Category = DuesCategory::find($id);
         $Category->delete();
         
         return redirect(route('admin.dues_category'))->with('success', 'Data berhasil dihapus');

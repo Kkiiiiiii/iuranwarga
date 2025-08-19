@@ -29,14 +29,10 @@ class AdminUsercontroller extends Controller
             'password' => 'required|string',
             'nohp' => 'required|string|max:15',
             'address' => 'required|string|max:255',
-            'level' => 'required|string',
         ]);
-
-        $user = User::create($validation);
         $validation['password'] = bcrypt($validation['password']);
-        if($validation['level'] == 'admin'){
-            officer::create(['users_id' => $user->id]);
-        }
+
+        User::create($validation);
         return redirect()->route('admin.wargaTab')->with('Message', 'Registrasi Berhasil');
     }
 
@@ -66,7 +62,6 @@ class AdminUsercontroller extends Controller
             'password' => 'nullable|max:500|string',
             'nohp' => 'required|string|max:15',
             'address' => 'required|string|max:255',
-            'level' => 'required|string',
         ]);
 
         if ($request->filled('password')) {
