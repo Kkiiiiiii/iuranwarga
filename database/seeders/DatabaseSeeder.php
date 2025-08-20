@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\dues_category;
 use App\Models\dues_members;
+use App\Models\DuesCategory;
+use App\Models\DuesMembers;
 use App\Models\officer;
 use App\Models\payment;
 use App\Models\User;
@@ -48,30 +50,32 @@ class DatabaseSeeder extends Seeder
             'level' => 'warga'
         ]);
 
-        dues_category::create([
+        DuesCategory::create([
             'id'=> 1,
             'period' => 'mingguan',
             'nominal' => 5000,
             'status'=> 1,
         ]);
 
-        dues_category::create([
+        DuesCategory::create([
             'id'=> 2,
             'period' => 'bulanan',
             'nominal' => 15000,
             'status'=> 1,
         ]);
 
-        dues_members::create([
+        DuesMembers::create([
             'id'=> 1,
             'users_id'=> 1,
             'dues_categories_id' => 1,
+            'status' => 1,
         ]);
 
-        dues_members::create([
+        DuesMembers::create([
             'id'=> 2,
             'users_id'=> 2,
             'dues_categories_id' => 2,
+            'status'=> 0,
         ]);
 
         officer::create([

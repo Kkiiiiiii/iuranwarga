@@ -14,11 +14,11 @@
     @endif
 
     @php
-        $no = 1;    
+        $no = 1;
     @endphp
 
     <a href="{{ route('admin.dues_memberCreate') }}" class="btn btn-sm btn-info align-items-end">Tambah Data Member</a>
-    <p>Data Member</p>
+    <p>Tagihan</p>
     <table class="table table-striped table-hover">
         <thead class="table">
             <tr>
@@ -26,16 +26,18 @@
                 <th>Nama</th>
                 <th>Period</th>
                 <th>Nominal</th>
+                <th>Status</th>
                 <th>Aksi</th>
             </tr>
         </thead>
-        <tbody>
+         <tbody>
             @foreach ($duesMember as $item)
             <tr>
             <td>{{ $no++ }}</td>
             <td>{{ $item->user->name }}</td>
             <td>{{ $item->duesCategory->period }}</td>
             <td class="text-success">Rp.{{ $item->duesCategory->nominal }}</td>
+            <td>{{ $item->status}}</td>
             <td>
                 <a href="{{ route('admin.paymentStore', Crypt::encrypt( $item->id )) }}" class="btn btn-sm btn-info" onclick="return confirm('Yakin {{ $item->user->name }} sudah membayar sebesar Rp.{{ $item->duesCategory->nominal }} ?')">Bayar</a>
                 <a href="{{ route('admin.dues_memberEdit', Crypt::encrypt( $item->id )) }}" class="btn btn-sm btn-info">Edit</a>

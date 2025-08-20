@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
 </head>
 <body>
-    <header class="navbar navbar-expand-sm bg-utama">
+    <header class="navbar navbar-expand-sm bg-utama d-flex justify-content-between">
         <div class="container">
-            <a class="navbar-brand " href="#">Navbar</a>
+            <a class="navbar-brand" href="#">Navbar</a>
             <button
                 class="navbar-toggler d-lg-none"
                 type="button"
@@ -25,7 +25,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
-                <form class="d-flex my-2 my-lg-0 w-100">
+                <form class="d-flex my-2 my-lg-0 w-100" action="{{ route('admin-searchDuescat') }}" method="GET">
                     <input
                         class="form-control me-sm-2 "
                         type="text"

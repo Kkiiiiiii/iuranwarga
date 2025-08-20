@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DuesCategory;
 use App\Models\officer;
 use App\Models\User;
 use Illuminate\Contracts\Encryption\DecryptException;
@@ -85,4 +86,17 @@ class AdminUsercontroller extends Controller
         $user->delete();
         return redirect()->route('admin.wargaTab');
     }
+
+       public function searchDuescat(Request $request)
+     {
+    $keyword = $request->input('keyword');
+
+    $dues_categories = DuesCategory::with('duesCategory')
+        ->where('period', 'like', "%$keyword%")
+        ->orWhere('status', 'like', "%$keyword%")
+        ->get();
+
+    return view('admin.dues_category.dues_category', compact('dues_categories'));
+     }
+
 }

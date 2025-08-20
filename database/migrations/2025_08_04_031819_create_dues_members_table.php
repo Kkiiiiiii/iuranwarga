@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('users_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('dues_categories_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

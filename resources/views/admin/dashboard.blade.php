@@ -11,30 +11,6 @@
     </div>
 
 </div>
-<div class="container mt-5">
-    <div class="d-flex gap-3">
-        <div class="card" style="width:300px">
-          <div class="card-body">
-            <h5 class="card-title">Card title 1</h5>
-            <h6 class="card-subtitle mb-2 text-muted ">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-         <div class="card" style="width:300px">
-          <div class="card-body">
-            <h5 class="card-title">Card title 2</h5>
-            <h6 class="card-subtitle mb-2 text-muted ">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-         <div class="card" style="width:300px">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted ">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-    </div>
     <div class="table mt-5">
         <table class="table table-striped table-hover">
             <thead class="table">
@@ -48,10 +24,9 @@
                     <th>Petugas</th>
                     <th>Nominal</th>
                     <th>Status</th>
-                    <th>Aksi</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody>  
                 <tr>
                 <td>1</td>
                 <td>Kii123</td>
@@ -62,10 +37,6 @@
                 <td>Admin</td>
                 <td class="text-success">5000</td>
                 <td class="text-primary">Sudah Bayar</td>
-                <td>
-                    <a href="" class="btn btn-sm btn-warning">Edit</a>
-                    <a href="" class="btn btn-sm btn-danger">Delete</a>
-                </td>
                 </tr>
             </tbody>
         </table>

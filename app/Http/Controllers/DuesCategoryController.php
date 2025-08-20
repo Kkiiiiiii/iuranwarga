@@ -40,7 +40,7 @@ class DuesCategoryController extends Controller
         } catch (DecryptException $e) {
             return redirect()->back()->with('Danger', $e->getMessage());
         }
-        
+
         $data['Category'] = DuesCategory::find($id);
         return view('admin.dues_category.edit_duesCategory', $data);
     }
@@ -73,7 +73,7 @@ class DuesCategoryController extends Controller
 
         $Category = DuesCategory::find($id);
         $Category->delete();
-        
+
         return redirect(route('admin.dues_category'))->with('success', 'Data berhasil dihapus');
     }
-}
+    }
