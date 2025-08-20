@@ -46,6 +46,8 @@ Route::middleware(['admin'])->group(function() {
     // Route::get('/admin/payment/edit/{id}', [PaymentController::class,'edit'])->name('admin.paymentEdit');
     // Route::post('/admin/payment/edit/{id}', [PaymentController::class,'update'])->name('admin.paymentUpdate');
     Route::get( '/admin/payment/delete/{id}', [PaymentController::class,'delete'])->name('admin.paymentDelete');
+    Route::get( '/admin/payment/detail/{id}', [PaymentController::class,'detail'])->name('admin.paymentDetail');
+
 });
 
 Route::middleware(['warga'])->group(function(){

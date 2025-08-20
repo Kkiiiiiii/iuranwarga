@@ -6,10 +6,9 @@ use App\Models\DuesCategory;
 use App\Models\DuesMembers;
 use App\Models\Payment;
 use App\Models\User;
-use Auth;
-use Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt as FacadesCrypt;
 
 class PaymentController extends Controller
 {
@@ -19,7 +18,7 @@ class PaymentController extends Controller
         return view('admin.payment.payment', $data);
     }
 
-    
+
     public function store(String $id)
     {
         try {
@@ -49,10 +48,10 @@ class PaymentController extends Controller
         } catch (DecryptException $e) {
             return redirect()->back()->with('danger', $e->getMessage());
         }
-        
+
         $payment = Payment::find($id);
         $payment->delete();
-        
+
         return redirect(route('admin.payment'))->with('success', 'Data berhasil dihapus');
     }
 
@@ -62,7 +61,7 @@ class PaymentController extends Controller
     //    $data['Category'] = DuesCategory::all();
     //    return view("admin.payment.tambah_payment", $data);
     // }
-    
+
 
     // public function edit(String $id){
     //     try {
@@ -87,7 +86,7 @@ class PaymentController extends Controller
     //     $validation = $request->validate([
     //     'dues_categories_id' => 'required',
     //     ]);
-        
+
     //     $member = DuesMembers::find($id);
     //     $member->update($validation);
     //     return redirect(route('admin.dues_member'))->with('success', 'Data berhasil diubah');

@@ -19,7 +19,8 @@
 
     {{-- <a href="{{ route('admin.paymentCreate') }}" class="btn btn-sm btn-info align-items-end">Tambah Data Pembayaran</a> --}}
     <p>Data Pembayaran</p>
-    <table class="table table-striped table-hover">
+    <hr>
+    <table class="table table-striped table-bordered table-hover">
         <thead class="table">
             <tr>
                 <th>No</th>
@@ -41,7 +42,7 @@
             <td>
                 {{-- <a href="{{ route('admin.dues_memberEdit', Crypt::encrypt( $item->id )) }}" class="btn btn-sm btn-info">Edit</a> --}}
                 <a href="{{ route('admin.paymentDelete', Crypt::encrypt( $item->id )) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin data dues member {{ $item->user->nama }} ini dihapus?')">Delete</a>
-                <a href="{{ route('admin.paymentDelete', Crypt::encrypt( $item->id )) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin data dues member {{ $item->user->nama }} ini dihapus?')">Delete</a>
+                <a href="{{ route('admin.paymentDetail', Crypt::encrypt( $item->id )) }}" class="btn btn-sm btn-primary">Detail Pembayaran</a>
             </td>
         </tr>
         @endforeach
