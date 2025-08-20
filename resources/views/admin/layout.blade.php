@@ -10,40 +10,28 @@
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
 </head>
 <body>
-    <header class="navbar navbar-expand-sm bg-utama d-flex justify-content-between">
-        <div class="container">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button
-                class="navbar-toggler d-lg-none"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapsibleNavId"
-                aria-controls="collapsibleNavId"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavId">
-                <form class="d-flex my-2 my-lg-0 w-100" action="{{ route('admin-searchDuescat') }}" method="GET">
-                    <input
-                        class="form-control me-sm-2 "
-                        type="text"
-                        placeholder="Search"
-                    />
-                    <button
-                        class="btn btn-outline-success my-2 my-sm-0"
-                        type="submit"
-                    >
-                        Search
-                    </button>
-                </form>
-                @if (Auth::user())
-                <a href="{{ route('logout') }}" class="btn btn-danger card-title text-bold text-center align-items-center" style="margin-left: 12px">Logout</a>
-                @endif
-            </div>
+    <header class="navbar navbar-expand-sm bg-utama">
+    <div class="container">
+        <a class="navbar-brand text-white" href="#">Navbar</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <form class="d-flex ms-auto w-100 me-2" action="{{ route('admin-searchDuescat') }}" method="GET">
+                <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+
+            @if (Auth::user())
+                <a href="{{ route('logout') }}" class="btn btn-danger ms-2">Logout</a>
+            @endif
         </div>
-    </header>
+    </div>
+</header>
+
     <div class="row" style="height: 100vh;">
         <div class="col-sm-2 bg-utama">
             <nav>

@@ -56,6 +56,10 @@ class PaymentController extends Controller
         return redirect(route('admin.payment'))->with('success', 'Data berhasil dihapus');
     }
 
+    public function detail(){
+        return view('admin.payment.payment_detail');
+    }
+
     // public function create()
     // {
     //    $data['Warga'] = User::all();
