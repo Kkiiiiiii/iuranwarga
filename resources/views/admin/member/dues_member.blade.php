@@ -18,7 +18,6 @@
     @endphp
 
     <a href="{{ route('admin.dues_memberCreate') }}" class="btn btn-sm btn-info align-items-end">Tambah Data Member</a>
-    <p>Tagihan</p>
     <table class="table table-striped table-hover">
         <thead class="table">
             <tr>
@@ -39,7 +38,7 @@
             <td class="text-success">Rp.{{ $item->duesCategory->nominal }}</td>
             <td>{{ $item->status}}</td>
             <td>
-                <a href="{{ route('admin.paymentStore', Crypt::encrypt( $item->id )) }}" class="btn btn-sm btn-info" onclick="return confirm('Yakin {{ $item->user->name }} sudah membayar sebesar Rp.{{ $item->duesCategory->nominal }} ?')">Bayar</a>
+                {{-- <a href="{{ route('admin.paymentStore', Crypt::encrypt( $item->id )) }}" class="btn btn-sm btn-info" onclick="return confirm('Yakin {{ $item->user->name }} sudah membayar sebesar Rp.{{ $item->duesCategory->nominal }} ?')">Bayar</a> --}}
                 <a href="{{ route('admin.dues_memberEdit', Crypt::encrypt( $item->id )) }}" class="btn btn-sm btn-info">Edit</a>
                 <a href="{{ route('admin.dues_memberDelete', Crypt::encrypt( $item->id )) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin data dues member {{ $item->user->nama }} ini dihapus?')">Delete</a>
             </td>

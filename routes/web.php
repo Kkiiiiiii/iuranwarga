@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminUsercontroller;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\DetailPaymentController;
 use App\Http\Controllers\DuesCategoryController;
 use App\Http\Controllers\DuesMemberController;
 use App\Http\Controllers\halamanutama;
@@ -42,14 +43,15 @@ Route::middleware(['admin'])->group(function() {
 
     Route::get('/admin/payment', [PaymentController::class,'view'])->name('admin.payment');
     // Route::get('/admin/payment/create', [PaymentController::class,'create'])->name('admin.paymentCreate');
-    Route::get('/admin/payment/create/{id}', [PaymentController::class,'store'])->name('admin.paymentStore');
+    // Route::post('/admin/payment/create/', [PaymentController::class,'store'])->name('admin.paymentStore');
     // Route::get('/admin/payment/edit/{id}', [PaymentController::class,'edit'])->name('admin.paymentEdit');
     // Route::post('/admin/payment/edit/{id}', [PaymentController::class,'update'])->name('admin.paymentUpdate');
     Route::get( '/admin/payment/delete/{id}', [PaymentController::class,'delete'])->name('admin.paymentDelete');
-    Route::get( '/admin/payment/detail/{id}', [PaymentController::class,'detail'])->name('admin.paymentDetail');
+    Route::get( '/admin/payment/detail/{id}', [DetailPaymentController::class,'payment_detail'])->name('admin.paymentDetail');
+    Route::post( '/admin/payment/detail/{id}', [DetailPaymentController::class,'payment_detail'])->name('admin.paymentDetail');
 
 });
 
 Route::middleware(['officer'])->group(function(){
-    
+
 });

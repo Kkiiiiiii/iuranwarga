@@ -20,7 +20,7 @@ class PaymentController extends Controller
     }
 
 
-    public function store(String $id)
+    public function store(request $request, String $id)
     {
         try {
             $id = Crypt::decrypt($id);
@@ -60,41 +60,41 @@ class PaymentController extends Controller
         return view('admin.payment.payment_detail');
     }
 
-    // public function create()
-    // {
-    //    $data['Warga'] = User::all();
-    //    $data['Category'] = DuesCategory::all();
-    //    return view("admin.payment.tambah_payment", $data);
-    // }
+    public function create()
+    {
+       $data['Warga'] = User::all();
+       $data['Category'] = DuesCategory::all();
+       return view("admin.payment.tambah_payment", $data);
+    }
 
 
-    // public function edit(String $id){
-    //     try {
-    //         $id = Crypt::decrypt($id);
-    //     } catch (DecryptException $e) {
-    //         return redirect()->back()->with('Danger', $e->getMessage());
-    //     }
+    public function edit(String $id){
+        try {
+            $id = Crypt::decrypt($id);
+        } catch (DecryptException $e) {
+            return redirect()->back()->with('Danger', $e->getMessage());
+        }
 
-    //     $data['Member'] = DuesMembers::find($id);
-    //     $data['Warga'] = User::all();
-    //     $data['Category'] = DuesCategory::all();
-    //     return view('admin.member.edit_duesMember', $data);
-    // }
+        $data['Member'] = DuesMembers::find($id);
+        $data['Warga'] = User::all();
+        $data['Category'] = DuesCategory::all();
+        return view('admin.member.edit_duesMember', $data);
+    }
 
-    // public function update(Request $request, String $id){
-    //     try {
-    //         $id = Crypt::decrypt($id);
-    //     } catch (DecryptException $e) {
-    //         return redirect()->back()->with('danger', $e->getMessage());
-    //     }
+    public function update(Request $request, String $id){
+        try {
+            $id = Crypt::decrypt($id);
+        } catch (DecryptException $e) {
+            return redirect()->back()->with('danger', $e->getMessage());
+        }
 
-    //     $validation = $request->validate([
-    //     'dues_categories_id' => 'required',
-    //     ]);
+        $validation = $request->validate([
+        'dues_categories_id' => 'required',
+        ]);
 
-    //     $member = DuesMembers::find($id);
-    //     $member->update($validation);
-    //     return redirect(route('admin.dues_member'))->with('success', 'Data berhasil diubah');
-    // }
+        $member = DuesMembers::find($id);
+        $member->update($validation);
+        return redirect(route('admin.dues_member'))->with('success', 'Data berhasil diubah');
+    }
 
 }
