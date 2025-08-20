@@ -25,7 +25,9 @@ class login extends Controller
                 return redirect()->intended(route('admin'));
             }elseif(Auth::user()->level == 'warga'){
                 return redirect()->intended(route('home'));
-            }else {
+            }elseif (Auth::user()->level == 'officer') {
+                return redirect()->intended(route('officer'));
+            } else {
                 return redirect()->back()->with('Message', 'Login Gagal');
             }
         }
