@@ -5,7 +5,6 @@
     <a href="" class="btn btn-sm btn-primary w-25">Bayar</a>
     <h5 class="mt-5">Payment Detail</h5>
     <hr>
-    <form action="{{ route('admin.paymentDetail', ['id' => Crypt::encrypt($member->users_id)]) }}" method="POST">
                     <th>No</th>
                     <th>Name</th>
                     <th>Period</th>
@@ -29,7 +28,6 @@
             @endforeach
         </tbody>
         </table>
-    </form>
 </div>
 @endsection
 

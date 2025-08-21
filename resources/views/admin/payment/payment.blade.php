@@ -19,6 +19,83 @@
 
     {{-- <a href="{{ route('admin.paymentCreate') }}" class="btn btn-sm btn-info align-items-end">Tambah Data Pembayaran</a> --}}
     <p>Data Pembayaran</p>
+    <!-- Modal trigger button -->
+    <button
+        type="button"
+        class="btn btn-primary btn-lg"
+        data-bs-toggle="modal"
+        data-bs-target="#pay"
+    >
+        Pay
+    </button>
+
+    <!-- Modal Body -->
+    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+    <div
+        class="modal fade"
+        id="pay"
+        tabindex="-1"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+
+        role="dialog"
+        aria-labelledby="modalTitleId"
+        aria-hidden="true"
+    >
+        <div
+            class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
+            role="document"
+        >
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitleId">
+                        Payment Form
+                    </h5>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                    ></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('admin.paymentStore') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+
+        <div class="mb-3">
+            <label for="users_id" class="form-label">nama</label>
+            <select name="users_id" id="users_id" class="form-control">
+                <option value="" disabled selected>Nama Warga</option>
+                @foreach ($Warga as $item)
+                    <option value="{{ $item->id }}">
+                        {{  $item->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="nominal_pembayaran" class="form-label">Nominal</label>
+            <div class="input-group">
+                <input type="number" class="form-control" id="nominal_pembayaran" name="nominal_pembayaran" placeholder="Masukkan Nominal">
+                <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-success w-100 btn-sm">Bayar</button>
+    </div>
+</div>
+</div>
+</div>
+
+    <script>
+        const myModal = new bootstrap.Modal(
+            document.getElementById("modalId"),
+            options,
+        );
+    </script>
+
     <hr>
     <table class="table table-striped table-bordered table-hover">
         <thead class="table">

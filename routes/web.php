@@ -43,9 +43,9 @@ Route::middleware(['admin'])->group(function() {
 
     Route::get('/admin/payment', [PaymentController::class,'view'])->name('admin.payment');
     // Route::get('/admin/payment/create', [PaymentController::class,'create'])->name('admin.paymentCreate');
-    // Route::post('/admin/payment/create/', [PaymentController::class,'store'])->name('admin.paymentStore');
     // Route::get('/admin/payment/edit/{id}', [PaymentController::class,'edit'])->name('admin.paymentEdit');
     // Route::post('/admin/payment/edit/{id}', [PaymentController::class,'update'])->name('admin.paymentUpdate');
+    Route::post('/admin/payment/create', [PaymentController::class,'store'])->name('admin.paymentStore');
     Route::get( '/admin/payment/delete/{id}', [PaymentController::class,'delete'])->name('admin.paymentDelete');
     Route::get( '/admin/payment/detail/{id}', [DetailPaymentController::class,'payment_detail'])->name('admin.paymentDetail');
     Route::post( '/admin/payment/detail/{id}', [DetailPaymentController::class,'payment_detail'])->name('admin.paymentDetail');
