@@ -17,7 +17,7 @@
     <h5>Nominal Tagihan : {{$tagihan->nominal_tagihan}}</h5>
     <hr>
     <table class="table table-bordered">
-        <thead>
+        <thead class="table-dark">
             <tr>
                 <th>No</th>
                 <th>Name</th>

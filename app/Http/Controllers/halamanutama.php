@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Payment;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -10,11 +11,13 @@ class halamanutama extends Controller
     //
     public function home()
     {
-        return view('warga.home');
+        $data['payment'] = Payment::all();
+        return view('warga.home', $data);
     }
 
     public function admin()
     {
-        return view('admin.dashboard');
+        $data['payment'] = Payment::all();
+        return view('admin.dashboard', $data);
     }
 }

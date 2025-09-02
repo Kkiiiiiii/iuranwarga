@@ -4,7 +4,7 @@
     <a href="{{ route('admin.wargaCreate') }}" class="btn btn-sm btn-info mt-5 align-items-end">Tambah Data Warga</a>
     <p>Data Admin</p>
     <table class="table table-striped table-hover">
-        <thead class="table">
+        <thead class="table-dark">
             <tr>
                 <th>No</th>
                 <th>Nama</th>
@@ -40,7 +40,7 @@
     </table>
     <p>Data Petugas</p>
     <table class="table table-striped table-hover">
-        <thead class="table">
+        <thead class="table-success">
             <tr>
                 <th>No</th>
                 <th>Nama</th>
@@ -76,7 +76,7 @@
     </table>
     <p>Data Warga</p>
     <table class="table table-striped table-hover">
-        <thead class="table">
+        <thead class="table-primary">
             <tr>
                 <th>No</th>
                 <th>Nama</th>

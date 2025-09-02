@@ -4,7 +4,7 @@
 </div>
     <div class="table mt-5">
         <table class="table table-striped table-hover">
-            <thead class="table">
+            <thead class="table-dark">
                 <tr>
                     <th>No</th>
                     <th>Nama</th>
@@ -17,7 +17,7 @@
                     <th>Status</th>
                 </tr>
             </thead>
-            <tbody>  
+            <tbody>
                 <tr>
                 <td>1</td>
                 <td>Kii123</td>

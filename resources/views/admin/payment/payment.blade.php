@@ -75,7 +75,6 @@
             <label for="nominal_pembayaran" class="form-label">Nominal</label>
             <div class="input-group">
                 <input type="number" class="form-control" id="nominal_pembayaran" name="nominal_pembayaran" placeholder="Masukkan Nominal">
-                <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
             </div>
         </div>
     </div>

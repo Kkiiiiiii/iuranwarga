@@ -20,7 +20,7 @@
     <a href="{{ route('admin.dues_categoryCreate') }}" class="btn btn-sm btn-info align-items-end">Tambah Data Kategori</a>
     <p>Data Kategori</p>
     <table class="table table-striped table-hover">
-        <thead class="table">
+        <thead class="table-info">
             <tr>
                 <th>No</th>
                 <th>Period</th>

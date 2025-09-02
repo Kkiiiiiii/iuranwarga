@@ -25,7 +25,7 @@
     >
         Create Member
     </button>
-    
+
     <div
         class="modal fade"
         id="pay"
@@ -85,8 +85,8 @@
 </div>
 </div>
     {{-- <a href="{{ route('admin.dues_memberCreate') }}" class="btn btn-sm btn-info align-items-end">Tambah Data Member</a> --}}
-    <table class="table table-striped table-hover">
-        <thead class="table">
+    <table class="table table-striped table-hover mt-4 pb-5">
+        <thead class="table-warning">
             <tr>
                 <th>No</th>
                 <th>Nama</th>
