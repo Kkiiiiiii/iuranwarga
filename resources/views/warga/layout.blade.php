@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
 </head>
 <body>
-    <header class="navbar navbar-expand-sm bg-utama">
+    <header class="navbar navbar-expand-sm bg-header">
         <div class="container">
             <a class="navbar-brand " href="#"><img src="{{ asset('assets/foto/logoo.png') }}" class="rounded-circle" width="50" height="50"></a>
             <button
@@ -53,8 +53,8 @@
                         <div class="container-fluid card bg-utama m-4 border-0" style="width:18rem;">
                           <img src="{{ asset('assets/foto/profile.jpg') }}" class="rounded-circle">
                           <div class="card-body">
-                            <h5 class="card-title text-bold text-center">{{ Auth::user()->name }}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted text-center">{{ Auth::user()->level }}</h6>
+                            <h5 class="card-title text-bold text-center text-white">{{ Auth::user()->name }}</h5>
+                            <h6 class="card-subtitle mb-2 text-white text-center">{{ Auth::user()->level }}</h6>
                           </div>
                         </div>
                     </div>
@@ -70,9 +70,9 @@
                     @endif
                     <div class="container row-cols-sm-auto mt-4">
                         <a href="{{ route('admin') }}" style="text-decoration: none">
-                            <div class="d-flex  gap-2 text-black">
+                            <div class="d-flex  gap-2 text-white">
                                 <span>
-                                    <i class="fa fa-dashboard" aria-hidden="true"></i>
+                                    <i class="fa fa-dashboard" aria-hidden="true" style="color:  #001E6C"></i>
                                 </span>
                                 <div class="bg-utama">
                                     <p>Dashboard</p>
@@ -80,16 +80,19 @@
                             </div>
                         </a>
 
+
+                        @if (Auth::check())
                         <a href="{{ route('member.history') }}" style="text-decoration: none">
-                            <div class="d-flex mt-auto gap-2 text-black">
+                            <div class="d-flex mt-auto gap-2 text-white">
                                 <span>
-                                    <i class="fa-solid fa-clock-rotate-left"></i>
+                                    <i class="fa-solid fa-clock-rotate-left" style="color:  #001E6C"></i>
                                 </span>
                                 <div class="">
                                     <p>History</p>
                                 </div>
                             </div>
                         </a>
+                        @endif
                     </div>
                 </div>
             </nav>

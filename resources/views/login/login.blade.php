@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 </head>
-<body style="margin: 0; height: 100vh; background: linear-gradient(45deg,#9EA9F0,#553C8B) ">
+<body style="margin: 0; height: 100vh; background: linear-gradient(45deg,#9EA9F0,#553C8B)">
     <div class="container mt-5">
         @if(session('success'))
       <div class="alert alert-success alert-dismissible">

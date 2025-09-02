@@ -1,5 +1,14 @@
 .bg-utama{
-    background-color: #8EACCD;
+    background-color:
+    /* #447D9B */
+    #3C486B
+
+    ;
+}
+.bg-header{
+    background-color:
+     #0D1164
+     ;
 }
 
 .text-bold{
