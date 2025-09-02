@@ -18,4 +18,6 @@ class Payment extends Model
     {
         return $this->belongsTo(DuesCategory::class, 'dues_categories_id');
     }
+
+    
 }

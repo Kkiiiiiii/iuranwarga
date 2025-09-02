@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('users_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->integer('nominal');
             $table->string('period');
             $table->foreignId('dues_categories_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('petugas');
+            $table->string('jumlah_tagihan');
+            $table->integer('nominal_tagihan');
             $table->timestamps();
         });
     }
