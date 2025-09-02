@@ -52,6 +52,6 @@ Route::middleware(['admin'])->group(function() {
 
 });
 
-Route::middleware(['officer'])->group(function(){
+Route::middleware(['officer'])->group(function(){ 
 
 });
