@@ -80,7 +80,7 @@
                             </div>
                         </a>
 
-                        <a href="{{ route('admin.wargaTab') }}" style="text-decoration: none">
+                        <a href="{{ route('member.history') }}" style="text-decoration: none">
                             <div class="d-flex mt-auto gap-2 text-black">
                                 <span>
                                     <i class="fa-solid fa-clock-rotate-left"></i>

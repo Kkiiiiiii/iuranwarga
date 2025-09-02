@@ -11,14 +11,14 @@
 </head>
 <body style="margin: 0; height: 100vh; background: linear-gradient(45deg,#9EA9F0,#553C8B) ">
     <div class="container mt-5">
-        @if(session('Message'))
+        @if(session('success'))
       <div class="alert alert-success alert-dismissible">
           {{ session('Message') }}
           <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
       </div>
       @elseif(session('Message'))
       <div class="alert alert-danger alert-dismissible">
-          {{ session('danger') }}
+          {{ session('Message') }}
           <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
       </div>
       @endif

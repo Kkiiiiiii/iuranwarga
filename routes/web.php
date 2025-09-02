@@ -14,6 +14,7 @@ Route::get('/', [halamanutama::class, 'home'])->name('home');
 Route::get("/login", [login::class,"login"])->name("login");
 Route::post("/auth", [login::class, "auth"])->name('auth');
 Route::get("/logout", [login::class, "logout"])->name(('logout'));
+Route::get('/history', [halamanutama::class, 'history'])->name('member.history');
 
 Route::middleware(['admin'])->group(function() {
     Route::get('/admin', [halamanutama::class, 'admin'])->name('admin');

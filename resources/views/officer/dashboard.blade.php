@@ -1,45 +1,39 @@
 @extends('officer.layout')
 @section('content')
-<div class="container-fluid" style="padding-left: 40px">
-    <div class="container-fluid justify-content-center">
-        <div class="card mt-5" style="width: 500px">
-            <div class="card-body">
-                <h5 class="card-title">Pemasukan</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-        </div>
+<div class="container mt-5  ">
+    @if(session('success'))
+    <div class="alert alert-success alert-dismissible">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
-
-</div>
-    <div class="table mt-5">
-        <table class="table table-striped table-hover">
-            <thead class="table">
-                <tr>
-                    <th>No</th>
-                    <th>Nama</th>
-                    <th>Username</th>
-                    <th>Nohp</th>
-                    <th>Address</th>
-                    <th>Period</th>
-                    <th>Petugas</th>
-                    <th>Nominal</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
+    @elseif(session('danger'))
+    <div class="alert alert-danger alert-dismissible">
+        {{ session('danger') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    @endif
+    <hr>
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Period</th>
+                <th>Nominal</th>
+                <th>Tanggal</th>
+            </tr>
+        </thead>
             <tbody>
+                @foreach ($payment as $item)
                 <tr>
-                <td>1</td>
-                <td>Kii123</td>
-                <td>Kii</td>
-                <td>9857847582475</td>
-                <td>spa</td>
-                <td>Mingguan</td>
-                <td>Admin</td>
-                <td class="text-success">5000</td>
-                <td class="text-primary">Sudah Bayar</td>
-                </tr>
-            </tbody>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $item->user->name }}</td>
+                <td>{{ $item->period }}</td>
+                <td class="text-success">Rp.{{ $item->nominal }}</td>
+                <td>{{ $item->created_at->format('d-m-Y') }}</td>
+            </tr>
+            @endforeach
+        </tbody>
         </table>
-    </div>
 </div>
 @endsection

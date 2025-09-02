@@ -15,7 +15,6 @@
 
     <form action="{{ route('admin.dues_memberUpdate', Crypt::encrypt( $Member->id )) }}" method="POST" enctype="multipart/form-data">
         @csrf
-        
         <div class="mb-3">
             <label for="users_id" class="form-label">nama</label>
             <select name="users_id" id="users_id" class="form-control">
