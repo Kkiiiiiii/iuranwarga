@@ -25,4 +25,9 @@ class halamanutama extends Controller
         $data['member'] = DuesMembers::all();
         return view('admin.dashboard', $data);
     }
+
+    public function officer()
+    {
+        return view('officer.dashboard');
+    }
 }

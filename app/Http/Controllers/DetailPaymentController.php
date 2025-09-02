@@ -23,6 +23,7 @@ class DetailPaymentController extends Controller
         $data['payment'] = Payment::where('users_id', $id)->orderBy('created_at', 'desc')->get();
         $data['tagihan'] = Payment::where('users_id', $id)->orderBy('created_at', 'desc')->first();
         return view('admin.payment.payment_detail', $data);
+        
     }
 
 }
