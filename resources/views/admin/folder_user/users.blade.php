@@ -29,9 +29,9 @@
             <td>{{ $item->address }}</td>
             <td>{{ $item->level }}</td>
             <td>
-                <a href="{{ route('warga-edit', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-success" onclick="return confirm('Yakin memberhentikan {{ $item->name }} dari admin')">Berhentikan Admin</a>
                 <a href="{{ route('warga-edit', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-warning">Edit</a>
                 <a href="{{ route('warga-delete', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin data warga ({{ $item->name }} ini dihapus?)')">Delete</a>
+                <a href="{{ route('warga.TurunJabatan', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-success" onclick="return confirm('Yakin memberhentikan {{ $item->name }} dari admin')">Berhentikan Admin</a>
             </td>
         </tr>
         @endif
@@ -65,9 +65,10 @@
             <td>{{ $item->address }}</td>
             <td>{{ $item->level }}</td>
             <td>
-                <a href="{{ route('warga-edit', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-success" onclick="return confirm('Yakin memberhentikan {{ $item->name }} dari petugas')">Berhentikan Petugas</a>
                 <a href="{{ route('warga-edit', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-warning">Edit</a>
                 <a href="{{ route('warga-delete', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin data warga ({{ $item->name }} ini dihapus?)')">Delete</a>
+                <a href="{{ route('warga.TurunJabatan', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-success" onclick="return confirm('Yakin memberhentikan {{ $item->name }} dari petugas')">Berhentikan Petugas</a>
+                <a href="{{ route('warga.NaikJabatan', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-success" onclick="return confirm('Yakin memberhentikan {{ $item->name }} dari petugas')">Jadikan Admin</a>
             </td>
         </tr>
         @endif
@@ -101,9 +102,9 @@
             <td>{{ $item->address }}</td>
             <td>{{ $item->level }}</td>
             <td>
-                <a href="{{ route('warga-update', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-success" onclick="return confirm('Yakin menjadikan {{ $item->name }} sebagai petugas')">Jadikan Petugas</a>
                 <a href="{{ route('warga-edit', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-warning">Edit</a>
                 <a href="{{ route('warga-delete', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin data warga ({{ $item->name }} ini dihapus?)')">Delete</a>
+                <a href="{{ route('warga.NaikJabatan', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-success" onclick="return confirm('Yakin menjadikan {{ $item->name }} sebagai petugas')">Jadikan Petugas</a>
             </td>
         </tr>
         @endif

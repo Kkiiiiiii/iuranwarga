@@ -24,6 +24,8 @@ Route::middleware(['admin'])->group(function() {
     Route::get('/admin/warga/edit/{id}', [AdminUsercontroller::class,'edit'])->name('warga-edit');
     Route::post('/admin/warga/edit/{id}', [AdminUsercontroller::class,'update'])->name('warga-update');
     Route::get('/admin/warga/delete/{id}', [AdminUsercontroller::class,'delete'])->name('warga-delete');
+    Route::get('/admin/warga/naik/{id}', [AdminUsercontroller::class, 'naikjabatan'])->name('warga.NaikJabatan');
+    Route::get('/admin/warga/turun/{id}', [AdminUsercontroller::class, 'turunjabatan'])->name('warga.TurunJabatan');
     Route::get('/admin/searchDues-cat', [AdminUsercontroller::class, 'searchDuesCat'])->name('admin-searchDuescat');
 
     Route::get('/admin/dues_category', [DuesCategoryController::class,'view'])->name('admin.dues_category');

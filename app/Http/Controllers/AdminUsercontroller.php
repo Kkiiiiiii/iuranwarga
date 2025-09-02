@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Monolog\Level;
 use PhpParser\Node\Expr\Cast\String_;
 
 class AdminUsercontroller extends Controller
@@ -87,16 +88,51 @@ class AdminUsercontroller extends Controller
         return redirect()->route('admin.wargaTab');
     }
 
-       public function searchDuescat(Request $request)
-     {
-    $keyword = $request->input('keyword');
+    public function naikjabatan(String $id){
+        try {
+            $id = Crypt::decrypt($id);
+        } catch (DecryptException $e) {
+            return redirect()->back()->with('danger', $e->getMessage());
+        }
+        $user = User::find($id);
+        if ($user->level == 'warga') {
+            $naik = 'officer';
+        }else if ($user->level == 'officer') {
+            $naik = 'admin';
+        }
+        $user->update([
+            'level' => $naik
+        ]);
+        return redirect()->route('admin.wargaTab');
+    }
 
-    $dues_categories = DuesCategory::with('duesCategory')
+    public function turunjabatan(String $id){
+        try {
+            $id = Crypt::decrypt($id);
+        } catch (DecryptException $e) {
+            return redirect()->back()->with('danger', $e->getMessage());
+        }
+        $user = User::find($id);
+        if ($user->level == 'admin') {
+            $turun = 'officer';
+        }else if ($user->level == 'officer') {
+            $turun = 'warga';
+        }
+        $user->update([
+            'level' => $turun
+        ]);
+        return redirect()->route('admin.wargaTab');
+    }
+
+    public function searchDuescat(Request $request)
+    {
+        $keyword = $request->input('keyword');
+
+        $dues_categories = DuesCategory::with('duesCategory')
         ->where('period', 'like', "%$keyword%")
         ->orWhere('status', 'like', "%$keyword%")
         ->get();
 
-    return view('admin.dues_category.dues_category', compact('dues_categories'));
-     }
-
+        return view('admin.dues_category.dues_category', compact('dues_categories'));
+    }
 }
