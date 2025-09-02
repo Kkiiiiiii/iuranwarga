@@ -18,14 +18,15 @@
     @endphp
 
     {{-- <a href="{{ route('admin.paymentCreate') }}" class="btn btn-sm btn-info align-items-end">Tambah Data Pembayaran</a> --}}
-    <p>Data Pembayaran</p>
+    
+    <h5 class="mt-3 pb-2">Data Pembayaran</h5>
+
     <button
-        type="button"
-        class="btn btn-primary btn-lg"
-        data-bs-toggle="modal"
-        data-bs-target="#pay"
-    >
-        Pay
+    type="button"
+    class="btn btn-primary btn-md"
+    data-bs-toggle="modal"
+    data-bs-target="#pay">
+    Pay
     </button>
 
     <div

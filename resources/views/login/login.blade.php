@@ -7,21 +7,29 @@
     <title>Login Page</title>
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 </head>
 <body  style="background-image: url('{{ asset('assets/foto/bg.jpg') }}'); background-size: cover; background-position:center; object-fit: fill;">
-    @if (session('Message'))
-    <div class="container alert alert-danger alert-dismissible mt-5" style="margin-bottom: -100px">
-        {{ session('Message') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <div class="container mt-5">
+        @if(session('Message'))
+      <div class="alert alert-success alert-dismissible">
+          {{ session('Message') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+      @elseif(session('Message'))
+      <div class="alert alert-danger alert-dismissible">
+          {{ session('danger') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+      @endif
     </div>
-
-    @endif
     <div class="container d-flex justify-content-center align-items-center mt-5">
         <div class="card shadow-sm mt-5">
           <div class="login-box">
              <div class="card-header text-center text-bg-info">
                 <h4 class="text-white mb-0">Login Page</h4>
             </div>
+                <img src="{{ asset('assets/foto/logo.png') }}" width="150" height="150" class="ml-k">
             <div class="card-body">
                 <form action="{{ route('auth') }}" method="post">
                     @csrf

@@ -12,7 +12,7 @@
 <body>
     <header class="navbar navbar-expand-sm bg-utama">
         <div class="container">
-            <a class="navbar-brand " href="#"><img src="{{ asset('assets/foto/logoo.png') }}" class="rounded-circle" width="70" height="70"></a>
+            <a class="navbar-brand " href="#"><img src="{{ asset('assets/foto/logoo.png') }}" class="rounded-circle" width="50" height="50"></a>
             <button
                 class="navbar-toggler d-lg-none"
                 type="button"

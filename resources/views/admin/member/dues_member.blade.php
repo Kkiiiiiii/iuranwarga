@@ -15,16 +15,19 @@
 
     @php
         $no = 1;
-    @endphp
+        @endphp
+        
+            <button
+                type="button"
+                class="btn btn-primary btn-md"
+                data-bs-toggle="modal"
+                data-bs-target="#pay"
+            >
+                Create Member
+            </button>
 
-    <button
-        type="button"
-        class="btn btn-primary btn-lg"
-        data-bs-toggle="modal"
-        data-bs-target="#pay"
-    >
-        Create Member
-    </button>
+    <h5 class="mt-3 pb-2">Data Member</h5>
+    <hr>
 
     <div
         class="modal fade"

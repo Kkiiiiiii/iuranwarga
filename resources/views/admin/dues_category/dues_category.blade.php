@@ -17,8 +17,9 @@
         $no = 1;
     @endphp
 
-    <a href="{{ route('admin.dues_categoryCreate') }}" class="btn btn-sm btn-info align-items-end">Tambah Data Kategori</a>
-    <p>Data Kategori</p>
+    <h5>Data Kategori</h5>
+    <a href="{{ route('admin.dues_categoryCreate') }}" class="btn btn-md btn-primary align-items-end btn-ghost-info text-white mb-4 mt-2">Tambah Data Kategori</a>
+    <hr>
     <table class="table table-striped table-hover">
         <thead class="table-info">
             <tr>

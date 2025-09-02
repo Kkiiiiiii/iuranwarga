@@ -12,7 +12,7 @@
 <body>
     <header class="navbar navbar-expand-sm bg-utama">
     <div class="container">
-        <a class="navbar-brand text-white" href="#">Navbar</a>
+        <a class="navbar-brand text-white" href="#"><img src="{{ asset('assets/foto/logoo.png') }}" class="rounded-circle" width="50" height="50"></a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
             aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,7 +74,7 @@
                                     <i class="fa fa-inbox" aria-hidden="true"></i>
                                 </span>
                                 <div class="">
-                                    <p>Dues Category</p>
+                                    <p>Category</p>
                                 </div>
                             </div>
                         </a>
@@ -85,7 +85,7 @@
                                     <i class="fa fa-user-circle" aria-hidden="true"></i>
                                 </span>
                                 <div class="">
-                                    <p>Dues Member</p>
+                                    <p>Member</p>
                                 </div>
                             </div>
                         </a>
@@ -93,7 +93,7 @@
                         <a href="{{ route('admin.payment') }}" style="text-decoration: none">
                             <div class="d-flex mt-auto gap-2 text-black">
                                 <span>
-                                    <i class="fa fa-user-circle" aria-hidden="true"></i>
+                                    <i class="fa-regular fa-money-bill-1" aria-hidden="true"></i>
                                 </span>
                                 <div class="">
                                     <p>Payment</p>

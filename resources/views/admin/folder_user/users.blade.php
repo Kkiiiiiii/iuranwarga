@@ -1,8 +1,8 @@
 @extends('admin.layout')
 @section('content')
 <div class="container">
-    <a href="{{ route('admin.wargaCreate') }}" class="btn btn-sm btn-info mt-5 align-items-end">Tambah Data Warga</a>
-    <p>Data Admin</p>
+    <a href="{{ route('admin.wargaCreate') }}" class="btn btn-md btn-primary mt-5 align-items-end text-white">Tambah Data Warga</a>
+    <h5 class="mt-3 pb-2">Data Admin</h5>
     <table class="table table-striped table-hover">
         <thead class="table-dark">
             <tr>
@@ -38,7 +38,7 @@
         @endforeach
     </tbody>
     </table>
-    <p>Data Petugas</p>
+    <h5 class="mb-3 pb-2">Data Petugas</h5>
     <table class="table table-striped table-hover">
         <thead class="table-success">
             <tr>
@@ -74,7 +74,7 @@
         @endforeach
     </tbody>
     </table>
-    <p>Data Warga</p>
+    <h5 class="mt-3 pb-2">Data Warga</h5>
     <table class="table table-striped table-hover">
         <thead class="table-primary">
             <tr>
