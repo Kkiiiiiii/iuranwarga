@@ -47,6 +47,16 @@ Route::middleware(['admin'])->group(function() {
 
 });
 
-Route::middleware(['officer'])->group(function(){ 
+Route::middleware(['officer'])->group(function(){
+    Route::get('/officer/dues_member', [DuesMemberController::class,'view'])->name('officer.dues_member');
+    Route::get('/officer/dues_member/create', [DuesMemberController::class,'create'])->name('officer.dues_memberCreate');
+    Route::post('/officer/dues_member/create', [DuesMemberController::class,'store'])->name('officer.dues_memberStore');
+    Route::get('/officer/dues_member/edit/{id}', [DuesMemberController::class,'edit'])->name('officer.dues_memberEdit');
+    Route::post('/officer/dues_member/edit/{id}', [DuesMemberController::class,'update'])->name('officer.dues_memberUpdate');
+    Route::get('/officer/dues_member/delete/{id}', [DuesMemberController::class,'delete'])->name('officer.dues_memberDelete');
 
+    Route::get('/officer/payment', [PaymentController::class,'view'])->name('officer.payment');
+    Route::post('/officer/payment/store', [PaymentController::class,'store'])->name('officer.paymentStore');
+    Route::get( '/officer/payment/delete/{id}', [PaymentController::class,'delete'])->name('officer.paymentDelete');
+    Route::get( '/officer/payment/detail/{id}', [DetailPaymentController::class,'payment_detail'])->name('officer.paymentDetail');
 });
