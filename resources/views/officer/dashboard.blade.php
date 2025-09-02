@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('officer.layout')
 @section('content')
 <div class="container-fluid" style="padding-left: 40px">
     <div class="container-fluid justify-content-center">
@@ -26,7 +26,7 @@
                     <th>Status</th>
                 </tr>
             </thead>
-            <tbody>  
+            <tbody>
                 <tr>
                 <td>1</td>
                 <td>Kii123</td>

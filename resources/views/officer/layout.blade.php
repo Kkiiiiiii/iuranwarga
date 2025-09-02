@@ -11,46 +11,34 @@
 </head>
 <body>
     <header class="navbar navbar-expand-sm bg-utama">
-        <div class="container">
-            <a class="navbar-brand " href="#">Navbar</a>
-            <button
-                class="navbar-toggler d-lg-none"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapsibleNavId"
-                aria-controls="collapsibleNavId"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavId">
-                <form class="d-flex my-2 my-lg-0 w-100">
-                    <input
-                        class="form-control me-sm-2 "
-                        type="text"
-                        placeholder="Search"
-                    />
-                    <button
-                        class="btn btn-outline-success my-2 my-sm-0"
-                        type="submit"
-                    >
-                        Search
-                    </button>
-                </form>
-                @if (Auth::user())
-                <a href="{{ route('logout') }}" class="btn btn-danger card-title text-bold text-center align-items-center" style="margin-left: 12px">Logout</a>
-                @endif
-            </div>
+    <div class="container">
+        <a class="navbar-brand text-white" href="#"><img src="{{ asset('assets/foto/logoo.png') }}" class="rounded-circle" width="50" height="50"></a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <form class="d-flex ms-auto w-100 me-2" action="{{ route('admin-searchDuescat') }}" method="GET">
+                <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+
+            @if (Auth::user())
+                <a href="{{ route('logout') }}" class="btn btn-danger ms-2">Logout</a>
+            @endif
         </div>
-    </header>
+    </div>
+</header>
+
     <div class="row" style="height: 100vh;">
         <div class="col-sm-2 bg-utama">
             <nav>
                 <div class="container mt-5">
                     <div class="container-fluid d-flex justify-content-center border rounded-2">
                         <div class="container-fluid card bg-utama m-4 border-0" style="width:18rem;">
-                          <img src="{{ asset('assets/foto/profile.jpg') }}" class="rounded-circle">
+                          <img src="{{ asset('assets/foto/profile.jpg') }}" class="rounded-circle" loading="eager">
                           <div class="card-body">
                             <h5 class="card-title text-bold text-center">{{ Auth::user()->name }}</h5>
                             <h6 class="card-subtitle mb-2 text-muted text-center">{{ Auth::user()->level }}</h6>
@@ -58,7 +46,7 @@
                         </div>
                     </div>
                     <div class="container row-cols-sm-auto mt-4">
-                        <a href="{{ route('admin') }}" style="text-decoration: none">
+                        <a href="{{ route('officer') }}" style="text-decoration: none">
                             <div class="d-flex  gap-2 text-black">
                                 <span>
                                     <i class="fa fa-dashboard" aria-hidden="true"></i>
@@ -69,43 +57,21 @@
                             </div>
                         </a>
 
-                        <a href="{{ route('admin.wargaTab') }}" style="text-decoration: none">
-                            <div class="d-flex mt-auto gap-2 text-black">
-                                <span>
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                </span>
-                                <div class="">
-                                    <p>Users</p>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="{{ route('admin.dues_category') }}" style="text-decoration: none">
-                            <div class="d-flex mt-auto gap-2 text-black">
-                                <span>
-                                    <i class="fa fa-inbox" aria-hidden="true"></i>
-                                </span>
-                                <div class="">
-                                    <p>Dues Category</p>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="{{ route('admin.dues_member') }}" style="text-decoration: none">
+                        <a href="{{ route('officer.dues_member') }}" style="text-decoration: none">
                             <div class="d-flex mt-auto gap-2 text-black">
                                 <span>
                                     <i class="fa fa-user-circle" aria-hidden="true"></i>
                                 </span>
                                 <div class="">
-                                    <p>Dues Member</p>
+                                    <p>Member</p>
                                 </div>
                             </div>
                         </a>
 
-                        <a href="{{ route('admin.payment') }}" style="text-decoration: none">
+                        <a href="{{ route('officer.payment') }}" style="text-decoration: none">
                             <div class="d-flex mt-auto gap-2 text-black">
                                 <span>
-                                    <i class="fa fa-user-circle" aria-hidden="true"></i>
+                                    <i class="fa-regular fa-money-bill-1" aria-hidden="true"></i>
                                 </span>
                                 <div class="">
                                     <p>Payment</p>

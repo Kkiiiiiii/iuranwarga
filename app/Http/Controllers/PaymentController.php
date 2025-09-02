@@ -18,7 +18,11 @@ class PaymentController extends Controller
     {
         $data['Warga'] = DuesMembers::all();
         $data['payment'] = Payment::with('user')->orderBy('created_at', 'desc')->get();
-        return view('admin.payment.payment', $data);
+        if (Auth::user()->level == 'admin') {
+            return view('admin.payment.payment', $data);
+        }else if (Auth::user()->level == 'officer') {
+            return view('officer.payment.payment', $data);
+        }
     }
 
 
@@ -48,7 +52,7 @@ class PaymentController extends Controller
             }
             $nominal_tagihan = ($jumlahMinggu - $payment->count()) * $member->duesCategory->nominal;
         }
-        
+
         $nominal_bayar = $request->nominal_pembayaran;
         $nominal_kategori = $member->duesCategory->nominal;
 
@@ -74,8 +78,12 @@ class PaymentController extends Controller
     //     $data['member'] = $member;
 
     // payment::create( $data );
-    return redirect()->route('admin.payment')->with('success', 'Berhasil melakukan pembayaran');
-        
+    if (Auth::user()->level == 'admin') {
+        return redirect()->route('admin.payment')->with('success', 'Berhasil melakukan pembayaran');
+    }else if (Auth::user()->level == 'officer') {
+        return redirect()->route('officer.payment')->with('success', 'Berhasil melakukan pembayaran');
+    }
+
     }
 
     public function delete(String $id)
@@ -90,11 +98,37 @@ class PaymentController extends Controller
         $user_id = $payment->users_id;
         $payment->delete();
 
-        return redirect(route('admin.paymentDetail', ['id' => Crypt::encrypt( $user_id )]))->with('success', 'Data berhasil dihapus');
+        if (Auth::user()->level == 'admin') {
+            return redirect(route('admin.paymentDetail', ['id' => Crypt::encrypt( $user_id )]))->with('success', 'Data berhasil dihapus');
+        }else if (Auth::user()->level == 'officer') {
+            return redirect(route('officer.paymentDetail', ['id' => Crypt::encrypt( $user_id )]))->with('success', 'Data berhasil dihapus');
+        }
+
     }
 
-    public function detail(){
-        return view('admin.payment.payment_detail');
+    public function detail(Request $request,String $id){
+        try {
+            $id = Crypt::decrypt($id);
+        } catch (DecryptException $e) {
+            return redirect()->back()->with('danger', $e->getMessage());
+        }
+
+
+        $data['payment'] = Payment::where('users_id', $id)->orderBy('created_at', 'desc')->get();
+        $data['tagihan'] = Payment::where('users_id', $id)->orderBy('created_at', 'desc')->first();
+        if ($data['payment'] == null || $data['tagihan'] == null) {
+            if (Auth::user()->level == 'admin') {
+                return redirect()->route('admin.payment')->with('success', 'Data berhasil dihapus');
+            }else if (Auth::user()->level == 'officer') {
+                return redirect()->route('officer.payment')->with('success', 'Data berhasil dihapus');
+            }
+        }
+        if (Auth::user()->level == 'admin') {
+            return view('admin.payment.payment_detail', $data);
+        }else if (Auth::user()->level == 'officer') {
+            return view('officer.payment.payment_detail', $data);
+        }
+
     }
 
     // public function create()
@@ -104,52 +138,21 @@ class PaymentController extends Controller
     //    return view("admin.payment.tambah_payment", $data);
     // }
 
-
-    public function edit(String $id){
-        try {
-            $id = Crypt::decrypt($id);
-        } catch (DecryptException $e) {
-            return redirect()->back()->with('Danger', $e->getMessage());
-        }
-
-        $data['Member'] = DuesMembers::find($id);
-        $data['Warga'] = User::all();
-        $data['Category'] = DuesCategory::all();
-        return view('admin.member.edit_duesMember', $data);
-    }
-
-    public function update(Request $request, String $id){
-        try {
-            $id = Crypt::decrypt($id);
-        } catch (DecryptException $e) {
-            return redirect()->back()->with('danger', $e->getMessage());
-        }
-
-        $validation = $request->validate([
-        'dues_categories_id' => 'required',
-        ]);
-        
-        $member = DuesMembers::find($id);
-        $member->update($validation);
-        return redirect(route('admin.dues_member'))->with('success', 'Data berhasil diubah');
-    }
-
     function hitungJumlahMinggu($tanggalAwal,$tanggalAkhir, $period){
         $awal = new DateTime($tanggalAwal);
         $akhir = new DateTime($tanggalAkhir);
-        $periode = new $period;
 
         if($akhir < $awal){
             return "Tanggal Akhir harus lebih besar dari tanggal Awal!";
         }
         $selisih = $awal->diff($akhir)->days;
-        if($periode == 'mingguan')
+        if($period == 'mingguan')
         {
             $jumlahminggu = ceil($selisih /7);
-        }else if($periode == 'bulanan')
+        }else if($period == 'bulanan')
         {
             $jumlahminggu = ceil($selisih /28);
-        }else if($periode == 'tahunan')
+        }else if($period == 'tahunan')
         {
             $jumlahminggu = ceil($selisih /365);
         }else
