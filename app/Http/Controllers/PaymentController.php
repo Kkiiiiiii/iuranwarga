@@ -35,7 +35,7 @@ class PaymentController extends Controller
         $tanggalAwal = $member->created_at->format('d-m-Y');
         $tanggalAkhir = date('d-m-Y');
         $period = $member->duesCategory->period;
-        $jumlahMinggu = $this->hitungJumlahMinggu($tanggalAwal, $tanggalAkhir);
+        $jumlahMinggu = $this->hitungJumlahMinggu($tanggalAwal, $tanggalAkhir, $period);
         $payment = Payment::where('users_id', $member->users_id)->get();
 
         if($payment->count() > $jumlahMinggu){
@@ -128,24 +128,35 @@ class PaymentController extends Controller
         $validation = $request->validate([
         'dues_categories_id' => 'required',
         ]);
-
+        
         $member = DuesMembers::find($id);
         $member->update($validation);
         return redirect(route('admin.dues_member'))->with('success', 'Data berhasil diubah');
     }
 
-    function hitungJumlahMinggu($tanggalAwal,$tanggalAkhir){
+    function hitungJumlahMinggu($tanggalAwal,$tanggalAkhir, $period){
         $awal = new DateTime($tanggalAwal);
         $akhir = new DateTime($tanggalAkhir);
+        $periode = new $period;
 
         if($akhir < $awal){
             return "Tanggal Akhir harus lebih besar dari tanggal Awal!";
         }
         $selisih = $awal->diff($akhir)->days;
-
-        $jumlahminggu = ceil($selisih /7);
+        if($periode == 'mingguan')
+        {
+            $jumlahminggu = ceil($selisih /7);
+        }else if($periode == 'bulanan')
+        {
+            $jumlahminggu = ceil($selisih /28);
+        }else if($periode == 'tahunan')
+        {
+            $jumlahminggu = ceil($selisih /365);
+        }else
+        {
+            return redirect()->back()->with('danger', 'Periode tidak ditemukan!');
+        }
 
         return $jumlahminggu;
     }
-
 }

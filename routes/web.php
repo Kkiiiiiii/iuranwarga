@@ -33,7 +33,6 @@ Route::middleware(['admin'])->group(function() {
     Route::post('/admin/dues_category/edit/{id}', [DuesCategoryController::class,'update'])->name('admin.dues_categoryUpdate');
     Route::get('/admin/dues_category/delete/{id}', [DuesCategoryController::class,'delete'])->name('admin.dues_categoryDelete');
 
-
     Route::get('/admin/dues_member', [DuesMemberController::class,'view'])->name('admin.dues_member');
     Route::get('/admin/dues_member/create', [DuesMemberController::class,'create'])->name('admin.dues_memberCreate');
     Route::post('/admin/dues_member/create', [DuesMemberController::class,'store'])->name('admin.dues_memberStore');
@@ -42,9 +41,6 @@ Route::middleware(['admin'])->group(function() {
     Route::get('/admin/dues_member/delete/{id}', [DuesMemberController::class,'delete'])->name('admin.dues_memberDelete');
 
     Route::get('/admin/payment', [PaymentController::class,'view'])->name('admin.payment');
-    // Route::get('/admin/payment/create', [PaymentController::class,'create'])->name('admin.paymentCreate');
-    // Route::get('/admin/payment/edit/{id}', [PaymentController::class,'edit'])->name('admin.paymentEdit');
-    // Route::post('/admin/payment/edit/{id}', [PaymentController::class,'update'])->name('admin.paymentUpdate');
     Route::post('/admin/payment/store', [PaymentController::class,'store'])->name('admin.paymentStore');
     Route::get( '/admin/payment/delete/{id}', [PaymentController::class,'delete'])->name('admin.paymentDelete');
     Route::get( '/admin/payment/detail/{id}', [DetailPaymentController::class,'payment_detail'])->name('admin.paymentDetail');
