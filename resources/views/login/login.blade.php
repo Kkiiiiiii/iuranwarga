@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 </head>
-<body  style="background-image: url('{{ asset('assets/foto/bg.jpg') }}'); background-size: cover; background-position:center; object-fit: fill;">
+<body style="margin: 0; height: 100vh; background: linear-gradient(45deg,#9EA9F0,#553C8B) ">
     <div class="container mt-5">
         @if(session('Message'))
       <div class="alert alert-success alert-dismissible">
@@ -26,8 +26,8 @@
     <div class="container d-flex justify-content-center align-items-center mt-5">
         <div class="card shadow-sm mt-5">
           <div class="login-box">
-             <div class="card-header text-center text-bg-info">
-                <h4 class="text-white mb-0">Login Page</h4>
+             <div class="card-header text-center  bg-utama">
+                <h4 class="text-white mb-0">Iuran Warga</h4>
             </div>
                 <img src="{{ asset('assets/foto/logo.png') }}" width="150" height="150" class="ml-k">
             <div class="card-body">
