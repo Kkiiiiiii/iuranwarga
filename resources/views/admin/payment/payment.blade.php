@@ -19,7 +19,6 @@
 
     {{-- <a href="{{ route('admin.paymentCreate') }}" class="btn btn-sm btn-info align-items-end">Tambah Data Pembayaran</a> --}}
     <p>Data Pembayaran</p>
-    <!-- Modal trigger button -->
     <button
         type="button"
         class="btn btn-primary btn-lg"
@@ -29,8 +28,6 @@
         Pay
     </button>
 
-    <!-- Modal Body -->
-    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
     <div
         class="modal fade"
         id="pay"
@@ -59,7 +56,7 @@
                     ></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('admin.paymentStore') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.paymentStore') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-3">
@@ -67,8 +64,8 @@
             <select name="users_id" id="users_id" class="form-control">
                 <option value="" disabled selected>Nama Warga</option>
                 @foreach ($Warga as $item)
-                    <option value="{{ $item->id }}">
-                        {{  $item->name }}
+                    <option value="{{ $item->users_id }}">
+                        {{ $item->user->name }}
                     </option>
                 @endforeach
             </select>
@@ -85,6 +82,7 @@
     <div class="modal-footer">
         <button type="submit" class="btn btn-success w-100 btn-sm">Bayar</button>
     </div>
+</form>
 </div>
 </div>
 </div>
@@ -104,25 +102,36 @@
                 <th>Nama</th>
                 <th>Period</th>
                 <th>Nominal</th>
+                <th>Jumlah Tagihan</th>
+                <th>Nominal Tagihan</th>
                 <th>Petugas</th>
                 <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
+            @php
+                $prosesUser = [];
+            @endphp
             @foreach ($payment as $item)
-            <tr>
-            <td>{{ $no++ }}</td>
-            <td>{{ $item->user->name }}</td>
-            <td>{{ $item->period }}</td>
-            <td class="text-success">Rp.{{ $item->duesCategory->nominal }}</td>
-            <td>{{ $item->petugas }}</td>
-            <td>
-                {{-- <a href="{{ route('admin.dues_memberEdit', Crypt::encrypt( $item->id )) }}" class="btn btn-sm btn-info">Edit</a> --}}
-                <a href="{{ route('admin.paymentDelete', Crypt::encrypt( $item->id )) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin data dues member {{ $item->user->nama }} ini dihapus?')">Delete</a>
-                <a href="{{ route('admin.paymentDetail', Crypt::encrypt( $item->id )) }}" class="btn btn-sm btn-primary">Detail Pembayaran</a>
-            </td>
-        </tr>
-        @endforeach
+            @if (!in_array($item->users_id, $prosesUser))
+                <td>{{ $no++ }}</td>
+                <td>{{ $item->user->name }}</td>
+                <td>{{ $item->period }}</td>
+                <td class="text-success">Rp.{{ $item->nominal }}</td>
+                <td>{{ $item->jumlah_tagihan }}</td>
+                <td>{{ $item->nominal_tagihan }}</td>
+                <td>{{ $item->petugas }}</td>
+                <td>
+                    {{-- <a href="{{ route('admin.dues_memberEdit', Crypt::encrypt( $item->id )) }}" class="btn btn-sm btn-info">Edit</a> --}}
+                    {{-- <a href="{{ route('admin.paymentDelete', Crypt::encrypt( $item->id )) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin data dues member {{ $item->user->nama }} ini dihapus?')">Delete</a> --}}
+                    <a href="{{ route('admin.paymentDetail', ['id' => Crypt::encrypt($item->users_id)]) }}" class="btn btn-sm btn-primary">Detail Pembayaran</a>
+                </td>
+            </tr>
+            @php
+                $prosesUser[] = $item->users_id;
+            @endphp
+            @endif
+            @endforeach
     </tbody>
     </table>
 </div>

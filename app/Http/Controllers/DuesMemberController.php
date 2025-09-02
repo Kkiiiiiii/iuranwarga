@@ -14,6 +14,8 @@ class DuesMemberController extends Controller
     public function view()
     {
         $data['duesMember'] = DuesMembers::all();
+        $data['Warga'] = User::all();
+        $data['Category'] = DuesCategory::all();
         return view('admin.member.dues_member', $data);
     }
 

@@ -68,35 +68,17 @@ class DatabaseSeeder extends Seeder
             'id'=> 1,
             'users_id'=> 1,
             'dues_categories_id' => 1,
-            'status' => 1,
         ]);
 
         DuesMembers::create([
             'id'=> 2,
             'users_id'=> 2,
             'dues_categories_id' => 2,
-            'status'=> 0,
         ]);
 
         officer::create([
             'id' => '1',
             'users_id' => 1,
-        ]);
-
-        payment::create([
-            'id' => '1',
-            'users_id' => 1,
-            'period' => 'mingguan',
-            'dues_categories_id'=> '1',
-            'petugas' => 'admin',
-        ]);
-
-        payment::create([
-            'id' => '2',
-            'users_id' => 2,
-            'period' => 'bulanan',
-            'dues_categories_id'=> '2',
-            'petugas' => 'admin',
         ]);
     }
 }

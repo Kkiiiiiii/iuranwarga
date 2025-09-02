@@ -16,8 +16,8 @@ class PaymentController extends Controller
 {
     public function view()
     {
-        $data['Warga'] = User::all();
-        $data['payment'] = Payment::all();
+        $data['Warga'] = DuesMembers::all();
+        $data['payment'] = Payment::with('user')->orderBy('created_at', 'desc')->get();
         return view('admin.payment.payment', $data);
     }
 
@@ -29,45 +29,54 @@ class PaymentController extends Controller
             'nominal_pembayaran' => 'required',
         ]);
         $member = DuesMembers::where('users_id', $validasi['users_id'])->first();
-        $tanggalAwal = "01-08-2025";
+        if (!$member) {
+            return redirect()->back()->with('danger', 'Data anggota atau kategori tidak ditemukan!');
+        }
+        $tanggalAwal = $member->created_at->format('d-m-Y');
         $tanggalAkhir = date('d-m-Y');
+        $period = $member->duesCategory->period;
         $jumlahMinggu = $this->hitungJumlahMinggu($tanggalAwal, $tanggalAkhir);
-        $payment = Payment::where('users_id', $member->id)->get();
+        $payment = Payment::where('users_id', $member->users_id)->get();
 
         if($payment->count() > $jumlahMinggu){
             $jumlah_tagihan = "Tidak ada";
             $nominal_tagihan = 0;
         }else{
             $jumlah_tagihan = $jumlahMinggu - $payment->count();
+            if($jumlah_tagihan == 0) {
+                $jumlah_tagihan = "Tidak ada";
+            }
             $nominal_tagihan = ($jumlahMinggu - $payment->count()) * $member->duesCategory->nominal;
         }
+        
+        $nominal_bayar = $request->nominal_pembayaran;
+        $nominal_kategori = $member->duesCategory->nominal;
 
-        if($request->bayar){
-            $nominal_bayar = $request->nominal;
-            $nominal_kategori = $member->duesCategory->nominal;
+        $jumlah_bayar = $request->nominal_pembayaran;
+        $nominal_kategori = $member->duesCategory->nominal;
 
-            $jumlah_bayar = $request->nominal;
-            $nominal_kategori = $member->duesCategory->nominal;
+        $jumlah_bayar = floor($nominal_bayar / $nominal_kategori);
+        for($i = 0; $i < $jumlah_bayar; $i++){
+            Payment::create([
+                'users_id' => $member->users_id,
+                'dues_categories_id' => $member->dues_categories_id,
+                'nominal' => $nominal_kategori,
+                'period'=> $member->duesCategory->period,
+                'petugas' => Auth::user()->name,
+                'jumlah_tagihan' => $jumlah_tagihan,
+                'nominal_tagihan' => $nominal_tagihan,
+            ]);
+        }
 
-            $jumlah_bayar = $nominal_bayar / $nominal_kategori;
-            for($i = 0; $i < $jumlah_bayar; $i++){
-                Payment::create([
-                    'users_id' => $member->users_id,
-                    'nominal' => $nominal_kategori,
-                    'period'=> $member->duesCategory->period,
-                    'petugas' => Auth::user()->id
-                ]);
-            }
+    //     $data['jumlah_tagihan'] = $jumlah_tagihan;
+    //     $data['nominal_tagihan'] = $nominal_tagihan;
+    //     $data['payment'] = $payment;
+    //     $data['member'] = $member;
 
-            $data['jumlah_tagihan'] = $jumlah_tagihan;
-            $data['nominal_tagihan'] = $nominal_tagihan;
-            $data['payment'] = $payment;
-            $data['member'] = $member;
-
-        payment::create( $data );
-        return redirect()->route('admin.payment')->with('success', 'Berhasil melakukan pembayaran');
+    // payment::create( $data );
+    return redirect()->route('admin.payment')->with('success', 'Berhasil melakukan pembayaran');
+        
     }
-}
 
     public function delete(String $id)
     {
@@ -78,9 +87,10 @@ class PaymentController extends Controller
         }
 
         $payment = Payment::find($id);
+        $user_id = $payment->users_id;
         $payment->delete();
 
-        return redirect(route('admin.payment'))->with('success', 'Data berhasil dihapus');
+        return redirect(route('admin.paymentDetail', ['id' => Crypt::encrypt( $user_id )]))->with('success', 'Data berhasil dihapus');
     }
 
     public function detail(){
