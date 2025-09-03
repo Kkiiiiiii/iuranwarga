@@ -10,10 +10,6 @@
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
 </head>
 <body>
-    @php
-        use App\Models\User;
-        $level = User::select('level')->distinct()->pluck('level');
-    @endphp
     <header class="navbar navbar-expand-sm bg-header">
     <div class="container">
         <a class="navbar-brand text-white" href="#"><img src="{{ asset('assets/foto/logoo.png') }}" class="rounded-circle" width="50" height="50"></a>
@@ -69,17 +65,36 @@
                                 <p>Users</p>
                             </div>
                         </div>
-                        @foreach ($level as $item)
                         <div class="collapse" id="contentId">
-                            <a href="{{ route('admin.wargaTab', Crypt::encrypt($item)) }}" style="text-decoration: none">
-                            <div class="d-flex mt-auto gap-2 text-white" style="padding-left: 30px; border-left: 2px solid white; border-bottom: 2px solid white;">
+                            <a href="{{ route('admin.wargaTab', Crypt::encrypt('admin')) }}" style="text-decoration: none">
+                                <div class="d-flex mt-auto gap-2 text-white" style="padding-left: 30px; border-left: 2px solid white; border-bottom: 2px solid white;">
+                                <i class="fa-solid fa-user-tie text-black mt-1"></i>
                                 <div class="">
-                                    <p>{{ $item }}</p>
+                                    <p>Admin</p>
                                 </div>
                             </div>
                             </a>
                         </div>
-                        @endforeach
+                          <div class="collapse" id="contentId">
+                            <a href="{{ route('admin.wargaTab', Crypt::encrypt('officer')) }}" style="text-decoration: none">
+                                <div class="d-flex mt-auto gap-2 text-white" style="padding-left: 30px; border-left: 2px solid white; border-bottom: 2px solid white;">
+                                <i class="fa-solid fa-user-secret text-black mt-1"></i>
+                                <div class="">
+                                    <p>Officer</p>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                           <div class="collapse" id="contentId">
+                            <a href="{{ route('admin.wargaTab', Crypt::encrypt('warga')) }}" style="text-decoration: none">
+                                <div class="d-flex mt-auto gap-2 text-white" style="padding-left: 30px; border-left: 2px solid white; border-bottom: 2px solid white;">
+                                <i class="fa-solid fa-users text-black mt-1"></i>
+                                <div class="">
+                                    <p>Warga</p>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
 
                         <a href="{{ route('admin.dues_category') }}" style="text-decoration: none">
                             <div class="d-flex mt-auto gap-2 text-white">

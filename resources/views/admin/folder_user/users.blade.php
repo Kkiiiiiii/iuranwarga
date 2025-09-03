@@ -12,7 +12,7 @@
                 <h5 class="mt-3 pb-2">Data Petugas</h5>
             @elseif ($lvl->level == 'warga')
                 <h5 class="mt-3 pb-2">Data Warga</h5>
-                <a href="{{ route('admin.wargaCreate') }}" class="btn btn-md btn-primary mt-5 align-items-end text-white">Tambah Data Warga</a>
+                <a href="{{ route('admin.wargaCreate') }}" class="btn btn-md btn-primary mb-4 align-items-end text-white">Tambah Data Warga</a>
             @endif
         @endif
         @php
