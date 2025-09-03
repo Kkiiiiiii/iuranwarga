@@ -13,6 +13,22 @@ use PhpParser\Node\Expr\Cast\String_;
 
 class AdminUsercontroller extends Controller
 {
+
+    public function findlevel($level)
+    {
+        if ($level == 'admin') {
+            $item = 'admin';
+        }elseif ($level == 'officer') {
+            $item = 'officer';
+        }elseif ($level == 'warga') {
+            $item = 'warga';
+        }else{
+            return redirect('home');
+        }
+
+        return $item;
+    }
+
     public function view(String $item){
         try {
             $item = Crypt::decrypt($item);
@@ -21,7 +37,6 @@ class AdminUsercontroller extends Controller
         }
 
         $data['user'] = User::where('level', $item)->get();
-        $data['level'] = User::where('level', $item)->get();
         return view('admin.folder_user.users', $data);
     }
 
@@ -42,7 +57,8 @@ class AdminUsercontroller extends Controller
         $validation['password'] = bcrypt($validation['password']);
 
         User::create($validation);
-        return redirect()->route('admin.wargaTab')->with('Message', 'Registrasi Berhasil');
+        $item = 'warga';
+        return redirect()->route('admin.wargaTab', Crypt::encrypt($item))->with('Message', 'Registrasi Berhasil');
     }
 
     public function edit(String $id){
@@ -80,8 +96,10 @@ class AdminUsercontroller extends Controller
         }
 
         $user = User::find($id);
+        $level = $user->level;
+        $item = $this->findlevel($level);
         $user->update($validation);
-        return redirect()->route('admin.wargaTab');
+        return redirect()->route('admin.wargaTab', Crypt::encrypt($item));
     }
 
     public function delete(String $id){
@@ -104,13 +122,15 @@ class AdminUsercontroller extends Controller
         $user = User::find($id);
         if ($user->level == 'warga') {
             $naik = 'officer';
-        }else if ($user->level == 'officer') {
-            $naik = 'admin';
+        }else {
+            return redirect()->back()->with('danger', 'level tidak ditemukan!');
         }
+        $level = $user->level;
+        $item = $this->findlevel($level);
         $user->update([
             'level' => $naik
         ]);
-        return redirect()->route('admin.wargaTab');
+        return redirect()->route('admin.wargaTab', Crypt::encrypt($item))->with('success', 'Warga sudah dijadikan sebagai petugas');
     }
 
     public function turunjabatan(String $id){
@@ -120,15 +140,17 @@ class AdminUsercontroller extends Controller
             return redirect()->back()->with('danger', $e->getMessage());
         }
         $user = User::find($id);
-        if ($user->level == 'admin') {
-            $turun = 'officer';
-        }else if ($user->level == 'officer') {
+        if ($user->level == 'officer') {
             $turun = 'warga';
+        }else {
+            return redirect()->back()->with('danger', 'level tidak ditemukan!');
         }
+        $level = $user->level;
+        $item = $this->findlevel($level);
         $user->update([
             'level' => $turun
         ]);
-        return redirect()->route('admin.wargaTab');
+        return redirect()->route('admin.wargaTab', Crypt::encrypt($item))->with('success', 'petugas sudah diberhentikan');
     }
 
     public function searchDuescat(Request $request)
