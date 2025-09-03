@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
 </head>
 <body>
+    @php
+        use App\Models\User;
+        $level = User::select('level')->distinct()->pluck('level');
+    @endphp
     <header class="navbar navbar-expand-sm bg-header">
     <div class="container">
         <a class="navbar-brand text-white" href="#"><img src="{{ asset('assets/foto/logoo.png') }}" class="rounded-circle" width="50" height="50"></a>
@@ -57,16 +61,25 @@
                             </div>
                         </a>
 
-                        <a href="{{ route('admin.wargaTab') }}" style="text-decoration: none">
-                            <div class="d-flex mt-auto gap-2 text-white">
-                                <span>
-                                    <i class="fa fa-user" aria-hidden="true" style="color:  #001E6C"></i>
-                                </span>
+                        <div class="d-flex mt-auto gap-2 text-white" data-bs-target="#contentId" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="contentId" style="text-decoration: none">
+                            <span>
+                                <i class="fa fa-user" aria-hidden="true" style="color:  #001E6C"></i>
+                            </span>
+                            <div class="">
+                                <p>Users</p>
+                            </div>
+                        </div>
+                        @foreach ($level as $item)
+                        <div class="collapse" id="contentId">
+                            <a href="{{ route('admin.wargaTab') }}" style="text-decoration: none">
+                            <div class="d-flex mt-auto gap-2 text-white" style="padding-left: 30px; border-left: 2px solid white; border-bottom: 2px solid white;">
                                 <div class="">
-                                    <p>Users</p>
+                                    <p>{{ $item }}</p>
                                 </div>
                             </div>
-                        </a>
+                            </a>
+                        </div>
+                        @endforeach
 
                         <a href="{{ route('admin.dues_category') }}" style="text-decoration: none">
                             <div class="d-flex mt-auto gap-2 text-white">
