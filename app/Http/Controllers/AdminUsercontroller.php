@@ -13,8 +13,15 @@ use PhpParser\Node\Expr\Cast\String_;
 
 class AdminUsercontroller extends Controller
 {
-    public function view(){
-        $data['warga'] = User::all();
+    public function view(String $item){
+        try {
+            $item = Crypt::decrypt($item);
+        } catch (DecryptException $e) {
+            return redirect()->back()->with('danger', $e->getMessage());
+        }
+
+        $data['user'] = User::where('level', $item)->get();
+        $data['level'] = User::where('level', $item)->get();
         return view('admin.folder_user.users', $data);
     }
 

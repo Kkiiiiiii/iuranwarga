@@ -71,7 +71,7 @@
                         </div>
                         @foreach ($level as $item)
                         <div class="collapse" id="contentId">
-                            <a href="{{ route('admin.wargaTab') }}" style="text-decoration: none">
+                            <a href="{{ route('admin.wargaTab', Crypt::encrypt($item)) }}" style="text-decoration: none">
                             <div class="d-flex mt-auto gap-2 text-white" style="padding-left: 30px; border-left: 2px solid white; border-bottom: 2px solid white;">
                                 <div class="">
                                     <p>{{ $item }}</p>
