@@ -9,42 +9,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
 </head>
-<body>
-    <header class="navbar navbar-expand-sm bg-header">
-        <div class="container">
-            <a class="navbar-brand " href="#"><img src="{{ asset('assets/foto/logoo.png') }}" class="rounded-circle" width="50" height="50"></a>
-            <button
-                class="navbar-toggler d-lg-none"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapsibleNavId"
-                aria-controls="collapsibleNavId"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavId">
-                <form class="d-flex my-2 my-lg-0 w-100">
-                    <input
-                        class="form-control me-sm-2 "
-                        type="text"
-                        placeholder="Search"
-                    />
-                    <button
-                        class="btn btn-outline-success my-2 my-sm-0"
-                        type="submit"
-                    >
-                        Search
-                    </button>
-                </form>
-                @if (Auth::user())
-                <a href="{{ route('logout') }}" class="btn btn-danger card-title text-bold text-center align-items-center" style="margin-left: 12px">Logout</a>
-                @endif
-            </div>
-        </div>
-    </header>
-    <div class="row" style="height: 100vh;">
+<body class="m-0 p-0">
+    <div class="row m-0" style="height: 100vh;">
         <div class="col-sm-2 bg-utama">
             <nav>
                 <div class="container mt-5">
@@ -97,7 +63,43 @@
                 </div>
             </nav>
         </div>
-        <div class="col-sm-10">
+        <div class="col-sm-10" style="">
+            <div class="w-100">
+                <header class="navbar navbar-expand-sm bg-header py-0 border border-dark" >
+                    <div class="container-fluid">
+                        <a class="navbar-brand " href="#"><img src="{{ asset('assets/foto/logoo.png') }}" class="rounded-circle" width="50" height="50"></a>
+                        <button
+                            class="navbar-toggler d-lg-none"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#collapsibleNavId"
+                            aria-controls="collapsibleNavId"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation"
+                        >
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="collapsibleNavId">
+                            <form class="d-flex my-2 my-lg-0 w-100">
+                                <input
+                                    class="form-control me-sm-2 "
+                                    type="text"
+                                    placeholder="Search"
+                                />
+                                <button
+                                    class="btn btn-outline-success my-2 my-sm-0"
+                                    type="submit"
+                                >
+                                    Search
+                                </button>
+                            </form>
+                            @if (Auth::user())
+                            <a href="{{ route('logout') }}" class="btn btn-danger card-title text-bold text-center align-items-center" style="margin-left: 12px">Logout</a>
+                            @endif
+                        </div>
+                    </div>
+                </header>
+            </div>
             @yield('content')
         </div>
     </div>

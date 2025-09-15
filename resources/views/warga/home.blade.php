@@ -5,7 +5,7 @@
         <div class="container">
             <h1 class="display-5 fw-medium text-white">IuranWarga</h1>
             <p class="col-md-8 fs-4">
-              IuranWarga adalah apk yang diguanakan untuk memudahkan warga dalam
+              IuranWarga adalah apk yang digunakan untuk memudahkan warga dalam
               Melakukan pembayaran iuran.
             </p>
         </div>
