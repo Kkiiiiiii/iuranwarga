@@ -36,7 +36,7 @@ class PaymentController extends Controller
         if (!$member) {
             return redirect()->back()->with('danger', 'Data anggota atau kategori tidak ditemukan!');
         }
-        $tanggalAwal = $member->created_at->format('d-m-Y');
+        $tanggalAwal = $member->registration_date;
         $tanggalAkhir = date('d-m-Y');
         $period = $member->duesCategory->period;
         $jumlahMinggu = $this->hitungJumlahMinggu($tanggalAwal, $tanggalAkhir, $period);
@@ -67,8 +67,8 @@ class PaymentController extends Controller
                 'nominal' => $nominal_kategori,
                 'period'=> $member->duesCategory->period,
                 'petugas' => Auth::user()->name,
-                'jumlah_tagihan' => $jumlah_tagihan,
-                'nominal_tagihan' => $nominal_tagihan,
+                'jumlah_tagihan' => $jumlah_tagihan - 1,
+                'nominal_tagihan' => ($jumlah_tagihan - 1) * $nominal_tagihan,
             ]);
         }
 

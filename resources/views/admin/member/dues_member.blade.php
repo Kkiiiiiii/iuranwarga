@@ -68,7 +68,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="dues_categories_id" class="form-label">period</label>
+            <label for="dues_categories_id" class="form-label">Period</label>
             <select name="dues_categories_id" id="dues_categories_id" class="form-control">
                 <option value="" disabled selected>Periode</option>
                 @foreach ($Category as $item)
@@ -77,6 +77,11 @@
                     </option>
                 @endforeach
             </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="registration_date" class="form-label">Registration Date</label>
+            <input type="date" class="form-control" name="registration_date" id="registration_date">
         </div>
 
         <div class="mb-3 text-center">
@@ -92,9 +97,10 @@
         <thead class="table-warning">
             <tr>
                 <th>No</th>
-                <th>Nama</th>
+                <th>Name</th>
                 <th>Period</th>
                 <th>Nominal</th>
+                <th>Registration Date</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -105,6 +111,7 @@
             <td>{{ $item->user->name }}</td>
             <td>{{ $item->duesCategory->period }}</td>
             <td class="text-success">Rp.{{ $item->duesCategory->nominal }}</td>
+            <td>{{ $item->registration_date }}</td>
             <td>
                 {{-- <a href="{{ route('admin.paymentStore', Crypt::encrypt( $item->id )) }}" class="btn btn-sm btn-info" onclick="return confirm('Yakin {{ $item->user->name }} sudah membayar sebesar Rp.{{ $item->duesCategory->nominal }} ?')">Bayar</a> --}}
                 <a href="{{ route('admin.dues_memberEdit', Crypt::encrypt( $item->id )) }}" class="btn btn-sm btn-info">Edit</a>

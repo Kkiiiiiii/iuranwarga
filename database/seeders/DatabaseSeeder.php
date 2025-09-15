@@ -67,12 +67,14 @@ class DatabaseSeeder extends Seeder
         DuesMembers::create([
             'id'=> 1,
             'users_id'=> 1,
+            'registration_date' => '2025-06-01',
             'dues_categories_id' => 1,
         ]);
 
         DuesMembers::create([
             'id'=> 2,
             'users_id'=> 2,
+            'registration_date' => '2025-06-01',
             'dues_categories_id' => 2,
         ]);
 

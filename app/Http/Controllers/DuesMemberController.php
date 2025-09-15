@@ -40,7 +40,12 @@ class DuesMemberController extends Controller
         $validation = $request->validate([
             'users_id' => 'required',
             'dues_categories_id' => 'required',
+            'registration_date' => 'nullable|date',
         ]);
+
+        if (empty($validation['registration_date'])) {
+            $validation['registration_date'] = date('Y-m-d');
+        }
 
         DuesMembers::create($validation);
         if (Auth::user()->level == 'admin') {
