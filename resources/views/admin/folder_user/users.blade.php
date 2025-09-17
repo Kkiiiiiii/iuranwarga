@@ -1,6 +1,7 @@
 @extends('admin.layout')
 @section('content')
 <div class="container mt-5">
+     <a href="{{ route('users.export') }}">Eksport data</a>
     @php
         $jumlahwarga = $user->where('level', 'warga')->count();
     @endphp

@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Exports;
+
+use App\Models\User;
+use Maatwebsite\Excel\Concerns\FromCollection;
+
+class UsersExport implements FromCollection
+{
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function collection()
+    {
+        //
+        $users = User::all();
+        return $users;
+    }
+
+    public function headings(): array
+    {
+        return [
+            'ID',
+            'Name',
+            'Email',
+            'Email Verified At',
+            'Password',
+            'Remember Token',
+            'Created At',
+            'Updated At',
+        ];
+    }
+}
