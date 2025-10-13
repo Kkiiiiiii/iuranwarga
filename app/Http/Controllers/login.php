@@ -28,10 +28,10 @@ class login extends Controller
             }elseif (Auth::user()->level == 'officer') {
                 return redirect()->intended(route('officer'));
             } else {
-                return redirect()->back()->with('Message', 'Login Gagal');
+                return redirect()->back()->with('Error', 'Login Gagal');
             }
         }
-        return redirect()->back()->with('Message', 'Login Gagal');
+        return redirect()->back()->with('Error', 'Login Gagal');
     }
 
     public function logout(){
