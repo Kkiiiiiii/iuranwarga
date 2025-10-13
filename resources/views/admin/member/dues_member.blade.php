@@ -16,7 +16,7 @@
     @php
         $no = 1;
         @endphp
-        
+
             <button
                 type="button"
                 class="btn btn-primary btn-md"

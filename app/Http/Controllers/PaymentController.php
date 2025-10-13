@@ -56,9 +56,6 @@ class PaymentController extends Controller
         $nominal_bayar = $request->nominal_pembayaran;
         $nominal_kategori = $member->duesCategory->nominal;
 
-        $jumlah_bayar = $request->nominal_pembayaran;
-        $nominal_kategori = $member->duesCategory->nominal;
-
         $jumlah_bayar = floor($nominal_bayar / $nominal_kategori);
         for($i = 0; $i < $jumlah_bayar; $i++){
             Payment::create([
@@ -67,8 +64,8 @@ class PaymentController extends Controller
                 'nominal' => $nominal_kategori,
                 'period'=> $member->duesCategory->period,
                 'petugas' => Auth::user()->name,
-                'jumlah_tagihan' => $jumlah_tagihan - 1,
-                'nominal_tagihan' => ($jumlah_tagihan - 1) * $nominal_tagihan,
+                'jumlah_tagihan' => $jumlah_tagihan,
+                'nominal_tagihan' => $nominal_tagihan,
             ]);
         }
 
@@ -83,7 +80,31 @@ class PaymentController extends Controller
     }else if (Auth::user()->level == 'officer') {
         return redirect()->route('officer.payment')->with('success', 'Berhasil melakukan pembayaran');
     }
+    }
 
+    function hitungJumlahMinggu($tanggalAwal,$tanggalAkhir, $period){
+        $awal = new DateTime($tanggalAwal);
+        $akhir = new DateTime($tanggalAkhir);
+
+        if($akhir < $awal){
+            return "Tanggal Akhir harus lebih besar dari tanggal Awal!";
+        }
+        $selisih = $awal->diff($akhir)->days;
+        if($period == 'mingguan')
+        {
+            $jumlahminggu = ceil($selisih /7);
+        }else if($period == 'bulanan')
+        {
+            $jumlahminggu = ceil($selisih /28);
+        }else if($period == 'tahunan')
+        {
+            $jumlahminggu = ceil($selisih /365);
+        }else
+        {
+            return redirect()->back()->with('danger', 'Periode tidak ditemukan!');
+        }
+
+        return $jumlahminggu;
     }
 
     public function delete(String $id)
@@ -137,29 +158,4 @@ class PaymentController extends Controller
     //    $data['Category'] = DuesCategory::all();
     //    return view("admin.payment.tambah_payment", $data);
     // }
-
-    function hitungJumlahMinggu($tanggalAwal,$tanggalAkhir, $period){
-        $awal = new DateTime($tanggalAwal);
-        $akhir = new DateTime($tanggalAkhir);
-
-        if($akhir < $awal){
-            return "Tanggal Akhir harus lebih besar dari tanggal Awal!";
-        }
-        $selisih = $awal->diff($akhir)->days;
-        if($period == 'mingguan')
-        {
-            $jumlahminggu = ceil($selisih /7);
-        }else if($period == 'bulanan')
-        {
-            $jumlahminggu = ceil($selisih /28);
-        }else if($period == 'tahunan')
-        {
-            $jumlahminggu = ceil($selisih /365);
-        }else
-        {
-            return redirect()->back()->with('danger', 'Periode tidak ditemukan!');
-        }
-
-        return $jumlahminggu;
-    }
 }

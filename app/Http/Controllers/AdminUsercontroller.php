@@ -41,13 +41,11 @@ class AdminUsercontroller extends Controller
     }
 
     public function create(){
-        $data['warga'] = User::all();
-        return view("admin.folder_user.tambah_users", $data);
+        return view("admin.folder_user.tambah_users");
     }
 
     public function store(Request $request) {
         $validation = $request->validate([
-            'id' => 'nullable',
             'name' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users',
             'password' => 'required|string',
@@ -109,8 +107,10 @@ class AdminUsercontroller extends Controller
             return redirect()->back()->with('danger', $e->getMessage());
         }
         $user = User::find($id);
+        $level = $user->level;
+        $item = $this->findlevel($level);
         $user->delete();
-        return redirect()->route('admin.wargaTab');
+        return redirect()->route('admin.wargaTab', Crypt::encrypt($item))->with('success', 'Data berhasil dihapus');
     }
 
     public function naikjabatan(String $id){
