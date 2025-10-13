@@ -13,8 +13,8 @@
     </div>
     @endif
     <h3 class="mt-5">Payment Detail</h3><br>
-    <h4>Jumlah Tagihan : {{$tagihan->jumlah_tagihan}}</h4>
-    <h5>Nominal Tagihan : {{$tagihan->nominal_tagihan}}</h5>
+    <h4>Jumlah Tagihan : {{$tagihan->jumlah_tagihan > 0 ? $tagihan->jumlah_tagihan : 'Lunas'}}</h4>
+    <h5>Nominal Tagihan : {{$tagihan->nominal_tagihan > 0 ? $tagihan->nominal_tagihan : 'Lunas'}}</h5>
     <hr>
     <table class="table table-bordered">
         <thead class="table-dark">

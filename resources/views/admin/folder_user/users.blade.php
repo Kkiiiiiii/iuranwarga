@@ -1,7 +1,7 @@
 @extends('admin.layout')
 @section('content')
 <div class="container mt-5">
-     <a href="{{ route('users.export') }}">Eksport data</a>
+     {{-- <a href="{{ route('users.export') }}">Eksport data</a> --}}
     @php
         $jumlahwarga = $user->where('level', 'warga')->count();
     @endphp
@@ -19,7 +19,7 @@
     @php
         $proseslevel = [];
     @endphp
-    {{ $jumlahwarga }}
+    {{-- {{ $jumlahwarga }} --}}
     @foreach ($user as $lvl)
         @if (!in_array($lvl->level, $proseslevel))
             @if ($lvl->level == 'admin')
