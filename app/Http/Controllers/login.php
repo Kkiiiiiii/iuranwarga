@@ -34,7 +34,8 @@ class login extends Controller
         return redirect()->back()->with('Message', 'Login Gagal');
     }
 
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
         return redirect()->route('login')->with('Message', 'Logout Berhasil');
     }

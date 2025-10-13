@@ -1,7 +1,7 @@
 @extends('admin.layout')
 @section('content')
 <div class="container mt-5">
-     <a href="{{ route('users.export') }}">Eksport data</a>
+     <a href="{{ route('users.export') }}" class="btn btn-md btn-success">Eksport data</a>
     @php
         $jumlahwarga = $user->where('level', 'warga')->count();
     @endphp
@@ -35,7 +35,7 @@
                 @endphp
         @endforeach
     @else
-        <a href="{{ route('admin.wargaCreate') }}" class="btn btn-md btn-primary mt-5 align-items-end text-white">Tambah Data Warga</a>
+        <a href="{{ route('admin.wargaCreate') }}" class="btn btn-md btn-primary mt-3 mb-3 align-items-end text-white">Tambah Data Warga</a>
     @endif
     <table class="table table-striped table-hover">
         <thead class="table-dark">
@@ -59,8 +59,10 @@
                 <td>{{ $item->address }}</td>
                 <td>{{ $item->level }}</td>
                 <td>
-                    <a href="{{ route('warga-edit', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-warning">Edit</a>
-                    <a href="{{ route('warga-delete', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin data warga ({{ $item->name }} ini dihapus?)')">Delete</a>
+                    <a href="{{ route('warga-edit', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-warning">
+                         <i class="fas fa-pen"></i> Edit</a>
+                    <a href="{{ route('warga-delete', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin data warga ({{ $item->name }} ini dihapus?)')">
+                         <i class="fas fa-trash"></i> Delete</a>
                     @if ($item->level == 'warga')
                         <a href="{{ route('warga.NaikJabatan', Crypt::encrypt($item->id)) }}" class="btn btn-sm btn-warning" onclick="return confirm('Yakin menjadikan ({{ $item->name }} sebagai petugas?)')">Jadikan Petugas</a>
                     @elseif ($item->level == 'officer')

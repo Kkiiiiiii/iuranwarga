@@ -31,8 +31,8 @@
             </div>
                 <img src="{{ asset('assets/foto/logo.png') }}" width="150" height="150" class="ml-k">
             <div class="card-body">
-                <form action="{{ route('auth') }}" method="post">
-                    @csrf
+                <form action="{{ route('auth') }}" method="POST">
+                    @csrf   
                     <div class="mb-3">
                         <label for="email" class="form-label">Username:</label>
                         <div class="input-group">

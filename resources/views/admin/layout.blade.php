@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
 </head>
 <body>
-    <header class="navbar navbar-expand-sm bg-header">
+    {{-- <header class="navbar navbar-expand-sm bg-dark">
     <div class="container">
         <a class="navbar-brand text-white" href="#"><img src="{{ asset('assets/foto/logoo.png') }}" class="rounded-circle" width="50" height="50"></a>
 
@@ -30,7 +30,7 @@
             @endif
         </div>
     </div>
-</header>
+</header> --}}
 
     <div class="row" style="height: 100vh;">
         <div class="col-sm-2 bg-utama">
@@ -128,6 +128,11 @@
                                 </div>
                             </div>
                         </a>
+                        <hr>
+                           @if (Auth::user())
+                            <a href="{{ route('logout') }}" class="text-white" style="text-decoration: none">
+                                <i class="fa-solid fa-right-from-bracket" style="color:  #001E6C"></i> Logout</a>
+                        @endif
                     </div>
                 </div>
             </nav>

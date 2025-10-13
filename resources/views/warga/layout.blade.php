@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Halaman - Warga</title>
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
@@ -28,13 +28,16 @@
                     <div class="container-fluid d-flex justify-content-center border rounded-2">
                         <div class="container-fluid card bg-utama m-4 border-0" style="width:18rem;">
                           <img src="{{ asset('assets/foto/profile.jpg') }}" class="rounded-circle">
-                          <div class="card-body">
+                          <div class="card-body ms-2">
                             <a href="{{ route('login') }}" class="btn btn-info card-title text-bold text-center align-items-center">Sign In</a>
                           </div>
                         </div>
                     </div>
                     @endif
                     <div class="container row-cols-sm-auto mt-4">
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                    </button>
                         <a href="{{ route('admin') }}" style="text-decoration: none">
                             <div class="d-flex  gap-2 text-white">
                                 <span>
@@ -65,7 +68,7 @@
         </div>
         <div class="col-sm-10" style="">
             <div class="w-100">
-                <header class="navbar navbar-expand-sm bg-header py-0 border border-dark" >
+                <header class="navbar navbar-expand-sm bg-header py-0 mt-4" >
                     <div class="container-fluid">
                         <a class="navbar-brand " href="#"><img src="{{ asset('assets/foto/logoo.png') }}" class="rounded-circle" width="50" height="50"></a>
                         <button

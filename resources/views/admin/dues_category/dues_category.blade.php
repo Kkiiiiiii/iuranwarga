@@ -44,8 +44,10 @@
                 @endif
             </td>
             <td>
-                <a href="{{ route('admin.dues_categoryEdit', Crypt::encrypt( $item->id )) }}" class="btn btn-sm btn-info">Edit</a>
-                <a href="{{ route('admin.dues_categoryDelete', Crypt::encrypt( $item->id )) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin data period {{ $item->period }} ini dihapus?')">Delete</a>
+                <a href="{{ route('admin.dues_categoryEdit', Crypt::encrypt( $item->id )) }}" class="btn btn-sm btn-info">
+                     <i class="fas fa-pen"></i> Edit</a>
+                <a href="{{ route('admin.dues_categoryDelete', Crypt::encrypt( $item->id )) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin data period {{ $item->period }} ini dihapus?')">
+                     <i class="fas fa-trash"></i> Delete</a>
             </td>
         </tr>
         @endforeach
