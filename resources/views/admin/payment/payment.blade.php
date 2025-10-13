@@ -18,7 +18,7 @@
     @endphp
 
     {{-- <a href="{{ route('admin.paymentCreate') }}" class="btn btn-sm btn-info align-items-end">Tambah Data Pembayaran</a> --}}
-    
+
     <h5 class="mt-3 pb-2">Data Pembayaran</h5>
 
     <button
@@ -118,8 +118,8 @@
                 <td>{{ $item->user->name }}</td>
                 <td>{{ $item->period }}</td>
                 <td class="text-success">Rp.{{ $item->nominal }}</td>
-                <td>{{ $item->jumlah_tagihan }}</td>
-                <td>{{ $item->nominal_tagihan }}</td>
+                <td>{{ $item->jumlah_tagihan > 0 ? $item->jumlah_tagihan : 'Lunas' }}</td>
+                <td>{{ $item->nominal_tagihan > 0 ? $item->nominal_tagihan : 'Lunas' }}</td>
                 <td>{{ $item->petugas }}</td>
                 <td>
                     {{-- <a href="{{ route('admin.dues_memberEdit', Crypt::encrypt( $item->id )) }}" class="btn btn-sm btn-info">Edit</a> --}}

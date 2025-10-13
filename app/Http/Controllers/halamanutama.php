@@ -35,8 +35,8 @@ class halamanutama extends Controller
 
     public function history(){
         $id = Auth::user()->id;
-        $data['payment'] = Payment::where('users_id', $id)->orderBy('created_at', 'desc')->get();
-        $data['tagihan'] = Payment::where('users_id', $id)->orderBy('created_at', 'desc')->first();
+        $data['payment'] = Payment::where('users_id', $id)->orderBy('id', 'desc')->get();
+        $data['tagihan'] = Payment::where('users_id', $id)->orderBy('id', 'desc')->first();
         return view('warga.history',$data);
     }
 }

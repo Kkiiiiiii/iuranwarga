@@ -17,7 +17,7 @@ class PaymentController extends Controller
     public function view()
     {
         $data['Warga'] = DuesMembers::all();
-        $data['payment'] = Payment::with('user')->orderBy('created_at', 'desc')->get();
+        $data['payment'] = Payment::with('user')->orderBy('id', 'desc')->get();
         if (Auth::user()->level == 'admin') {
             return view('admin.payment.payment', $data);
         }else if (Auth::user()->level == 'officer') {
@@ -30,45 +30,47 @@ class PaymentController extends Controller
     {
         $validasi = $request->validate([
             'users_id' => 'required',
-            'nominal_pembayaran' => 'required',
+            'nominal_pembayaran' => 'required|numeric|min:1',
         ]);
+
         $member = DuesMembers::where('users_id', $validasi['users_id'])->first();
         if (!$member) {
             return redirect()->back()->with('danger', 'Data anggota atau kategori tidak ditemukan!');
         }
-        $tanggalAwal = $member->registration_date;
-        $tanggalAkhir = date('d-m-Y');
-        $period = $member->duesCategory->period;
-        $jumlahMinggu = $this->hitungJumlahMinggu($tanggalAwal, $tanggalAkhir, $period);
-        $payment = Payment::where('users_id', $member->users_id)->get();
 
-        if($payment->count() > $jumlahMinggu){
-            $jumlah_tagihan = "Tidak ada";
-            $nominal_tagihan = 0;
-        }else{
-            $jumlah_tagihan = $jumlahMinggu - $payment->count();
-            if($jumlah_tagihan == 0) {
-                $jumlah_tagihan = "Tidak ada";
-            }
-            $nominal_tagihan = ($jumlahMinggu - $payment->count()) * $member->duesCategory->nominal;
+        $tanggalAwal = $member->registration_date;
+        $tanggalAkhir = date('Y-m-d');
+        $period = $member->duesCategory->period;
+
+        $jumlahMinggu = $this->hitungJumlahMinggu($tanggalAwal, $tanggalAkhir, $period);
+        $paymentCount = Payment::where('users_id', $member->users_id)->count();
+        $sisaTagihan = $jumlahMinggu - $paymentCount;
+
+        if ($sisaTagihan <= 0) {
+            return redirect()->back()->with('success', 'Tagihan sudah lunas!');
         }
 
-        $nominal_bayar = $request->nominal_pembayaran;
         $nominal_kategori = $member->duesCategory->nominal;
+        $nominal_bayar = $validasi['nominal_pembayaran'];
 
-        $jumlah_bayar = $request->nominal_pembayaran;
-        $nominal_kategori = $member->duesCategory->nominal;
-
+        // Hitung berapa kali bisa bayar dengan nominal ini
         $jumlah_bayar = floor($nominal_bayar / $nominal_kategori);
-        for($i = 0; $i < $jumlah_bayar; $i++){
+        if ($jumlah_bayar == 0) {
+            return redirect()->back()->with('danger', 'Nominal terlalu kecil untuk 1 pembayaran!');
+        }
+
+        // Jangan sampai bayar lebih dari sisa tagihan
+        $jumlah_bayar = min($jumlah_bayar, $sisaTagihan);
+
+        for ($i = 0; $i < $jumlah_bayar; $i++) {
             Payment::create([
                 'users_id' => $member->users_id,
                 'dues_categories_id' => $member->dues_categories_id,
                 'nominal' => $nominal_kategori,
-                'period'=> $member->duesCategory->period,
+                'period' => $period,
                 'petugas' => Auth::user()->name,
-                'jumlah_tagihan' => $jumlah_tagihan - 1,
-                'nominal_tagihan' => ($jumlah_tagihan - 1) * $nominal_tagihan,
+                'jumlah_tagihan' => $sisaTagihan - ($i + 1), // hitung dinamis
+                'nominal_tagihan' => ($sisaTagihan - ($i + 1)) * $nominal_kategori,
             ]);
         }
 
@@ -83,7 +85,31 @@ class PaymentController extends Controller
     }else if (Auth::user()->level == 'officer') {
         return redirect()->route('officer.payment')->with('success', 'Berhasil melakukan pembayaran');
     }
+    }
 
+    function hitungJumlahMinggu($tanggalAwal,$tanggalAkhir, $period){
+        $awal = new DateTime($tanggalAwal);
+        $akhir = new DateTime($tanggalAkhir);
+
+        if($akhir < $awal){
+            return "Tanggal Akhir harus lebih besar dari tanggal Awal!";
+        }
+        $selisih = $awal->diff($akhir)->days;
+        if($period == 'mingguan')
+        {
+            $jumlahminggu = ceil($selisih /7);
+        }else if($period == 'bulanan')
+        {
+            $jumlahminggu = ceil($selisih /28);
+        }else if($period == 'tahunan')
+        {
+            $jumlahminggu = ceil($selisih /365);
+        }else
+        {
+            return redirect()->back()->with('danger', 'Periode tidak ditemukan!');
+        }
+
+        return $jumlahminggu;
     }
 
     public function delete(String $id)
@@ -114,8 +140,8 @@ class PaymentController extends Controller
         }
 
 
-        $data['payment'] = Payment::where('users_id', $id)->orderBy('created_at', 'desc')->get();
-        $data['tagihan'] = Payment::where('users_id', $id)->orderBy('created_at', 'desc')->first();
+        $data['payment'] = Payment::where('users_id', $id)->orderBy('id', 'desc')->get();
+        $data['tagihan'] = Payment::where('users_id', $id)->orderBy('id', 'desc')->first();
         if ($data['payment'] == null || $data['tagihan'] == null) {
             if (Auth::user()->level == 'admin') {
                 return redirect()->route('admin.payment')->with('success', 'Data berhasil dihapus');
@@ -137,29 +163,4 @@ class PaymentController extends Controller
     //    $data['Category'] = DuesCategory::all();
     //    return view("admin.payment.tambah_payment", $data);
     // }
-
-    function hitungJumlahMinggu($tanggalAwal,$tanggalAkhir, $period){
-        $awal = new DateTime($tanggalAwal);
-        $akhir = new DateTime($tanggalAkhir);
-
-        if($akhir < $awal){
-            return "Tanggal Akhir harus lebih besar dari tanggal Awal!";
-        }
-        $selisih = $awal->diff($akhir)->days;
-        if($period == 'mingguan')
-        {
-            $jumlahminggu = ceil($selisih /7);
-        }else if($period == 'bulanan')
-        {
-            $jumlahminggu = ceil($selisih /28);
-        }else if($period == 'tahunan')
-        {
-            $jumlahminggu = ceil($selisih /365);
-        }else
-        {
-            return redirect()->back()->with('danger', 'Periode tidak ditemukan!');
-        }
-
-        return $jumlahminggu;
-    }
 }

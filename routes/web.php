@@ -20,8 +20,8 @@ Route::middleware(['admin'])->group(function() {
     Route::get('/users/export',[AdminUsercontroller::class, 'export'])->name('users.export');
     Route::get('/admin', [halamanutama::class, 'admin'])->name('admin');
 
-    Route::get('/admin/warga/{item}', [AdminUsercontroller::class,'view'])->name('admin.wargaTab');
     Route::get('/admin/warga/create', [AdminUsercontroller::class,'create'])->name('admin.wargaCreate');
+    Route::get('/admin/warga/{item}', [AdminUsercontroller::class,'view'])->name('admin.wargaTab');
     Route::post('/admin/warga/store', [AdminUsercontroller::class,'store'])->name('admin.wargaStore');
     Route::get('/admin/warga/edit/{id}', [AdminUsercontroller::class,'edit'])->name('warga-edit');
     Route::post('/admin/warga/edit/{id}', [AdminUsercontroller::class,'update'])->name('warga-update');
@@ -62,7 +62,7 @@ Route::middleware(['officer'])->group(function(){
     Route::get('/officer/dues_member/delete/{id}', [DuesMemberController::class,'delete'])->name('officer.dues_memberDelete');
 
     Route::get('/officer/payment', [PaymentController::class,'view'])->name('officer.payment');
-    Route::post('/officer/payment/store', [PaymentController::class,'store'])->name('officer.paymentStore');
+    Route::post('/officer/payment/store',   [PaymentController::class,'store'])->name('officer.paymentStore');
     Route::get( '/officer/payment/delete/{id}', [PaymentController::class,'delete'])->name('officer.paymentDelete');
     Route::get( '/officer/payment/detail/{id}', [PaymentController::class,'detail'])->name('officer.paymentDetail');
 });

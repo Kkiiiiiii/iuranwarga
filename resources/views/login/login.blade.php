@@ -16,9 +16,9 @@
           {{ session('Message') }}
           <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
       </div>
-      @elseif(session('Message'))
+      @elseif(session('Error'))
       <div class="alert alert-danger alert-dismissible">
-          {{ session('Message') }}
+          {{ session('Error') }}
           <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
       </div>
       @endif

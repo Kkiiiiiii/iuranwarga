@@ -13,8 +13,11 @@
     </div>
     @endif
     <h3 class="mt-5">History Pembayaran</h3><br>
-    <h4>Jumlah Tagihan : {{$tagihan->jumlah_tagihan}}</h4>
-    <h5>Nominal Tagihan : {{$tagihan->nominal_tagihan}}</h5>
+    @if (!$tagihan->jumlah_tagihan)
+        {{ route('home') }}
+    @endif
+    <h4>Jumlah Tagihan : {{$tagihan->jumlah_tagihan > 0 ? $tagihan->jumlah_tagihan : 'Lunas'}}</h4>
+    <h5>Nominal Tagihan : {{$tagihan->nominal_tagihan > 0 ? $tagihan->nominal_tagihan : 'Lunas'}}</h5>
     <hr>
     <table class="table table-bordered">
         <thead class="table-dark">
