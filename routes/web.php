@@ -17,6 +17,7 @@ Route::get("/logout", [login::class, "logout"])->name(('logout'));
 Route::get('/history', [halamanutama::class, 'history'])->name('member.history');
 
 Route::middleware(['admin'])->group(function() {
+    Route::get('/users/export',[AdminUsercontroller::class, 'export'])->name('users.export');
     Route::get('/admin', [halamanutama::class, 'admin'])->name('admin');
 
     Route::get('/admin/warga/{item}', [AdminUsercontroller::class,'view'])->name('admin.wargaTab');
