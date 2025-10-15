@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     </head>
     <body>
         {{-- <header class="navbar navbar-expand-sm" style="background-color: #001E6C;">
@@ -94,3 +96,5 @@
     </html>
     <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{ asset('assets/fontawesome/js/fontawesome.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+

@@ -1,36 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
+    
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}" />
 </head>
 <body>
-    {{-- <header class="navbar navbar-expand-sm bg-dark">
-    <div class="container">
-        <a class="navbar-brand text-white" href="#"><img src="{{ asset('assets/foto/logoo.png') }}" class="rounded-circle" width="50" height="50"></a>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarContent">
-            <form class="d-flex ms-auto w-100 me-2" action="{{ route('admin-searchDuescat') }}" method="GET">
-                <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-
-            @if (Auth::user())
-                <a href="{{ route('logout') }}" class="btn btn-danger ms-2">Logout</a>
-            @endif
-        </div>
-    </div>
-</header> --}}
+    {{-- <header>...</header> --}}
 
     <div class="row" style="height: 100vh;">
         <div class="col-sm-2 bg-utama">
@@ -38,100 +19,73 @@
                 <div class="container mt-5">
                     <div class="container-fluid d-flex justify-content-center border rounded-2">
                         <div class="container-fluid card bg-utama m-4 border-0" style="width:18rem;">
-                          <img src="{{ asset('assets/foto/profile.jpg') }}" class="rounded-circle" loading="eager">
-                          <div class="card-body">
-                            <h5 class="card-title text-bold text-center text-white">{{ Auth::user()->name }}</h5>
-                            <h6 class="card-subtitle mb-2 text-center text-white">{{ Auth::user()->level }}</h6>
-                          </div>
+                            <img src="{{ asset('assets/foto/profile.jpg') }}" class="rounded-circle" loading="eager" />
+                            <div class="card-body">
+                                <h5 class="card-title text-bold text-center text-white">{{ Auth::user()->name }}</h5>
+                                <h6 class="card-subtitle mb-2 text-center text-white">{{ Auth::user()->level }}</h6>
+                            </div>
                         </div>
                     </div>
                     <div class="container row-cols-sm-auto mt-4">
                         <a href="{{ route('admin') }}" style="text-decoration: none">
-                            <div class="d-flex  gap-2 text-white">
-                                <span>
-                                    <i class="fa fa-dashboard" aria-hidden="true" style="color:  #001E6C"></i>
-                                </span>
-                                <div class="bg-utama">
-                                    <p>Dashboard</p>
-                                </div>
+                            <div class="d-flex gap-2 text-white">
+                                <span><i class="fa fa-dashboard" aria-hidden="true" style="color: #001E6C"></i></span>
+                                <div class="bg-utama"><p>Dashboard</p></div>
                             </div>
                         </a>
 
                         <div class="d-flex mt-auto gap-2 text-white" data-bs-target="#contentId" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="contentId" style="text-decoration: none">
-                            <span>
-                                <i class="fa fa-user" aria-hidden="true" style="color:  #001E6C"></i>
-                            </span>
-                            <div class="">
-                                <p>Users</p>
-                            </div>
+                            <span><i class="fa fa-user" aria-hidden="true" style="color: #001E6C"></i></span>
+                            <div><p>Users</p></div>
                         </div>
+
                         <div class="collapse" id="contentId">
                             <a href="{{ route('admin.wargaTab', Crypt::encrypt('admin')) }}" style="text-decoration: none">
-                                <div class="d-flex mt-auto gap-2 text-white" style="padding-left: 30px; border-left: 2px solid white; border-bottom: 2px solid white;">
-                                <i class="fa-solid fa-user-tie text-black mt-1"></i>
-                                <div class="">
+                                <div class="d-flex mt-auto gap-2 text-white ps-4 border-start border-bottom">
+                                    <i class="fa-solid fa-user-tie text-black mt-1"></i>
                                     <p>Admin</p>
                                 </div>
-                            </div>
                             </a>
-                        </div>
-                          <div class="collapse" id="contentId">
                             <a href="{{ route('admin.wargaTab', Crypt::encrypt('officer')) }}" style="text-decoration: none">
-                                <div class="d-flex mt-auto gap-2 text-white" style="padding-left: 30px; border-left: 2px solid white; border-bottom: 2px solid white;">
-                                <i class="fa-solid fa-user-secret text-black mt-1"></i>
-                                <div class="">
+                                <div class="d-flex mt-auto gap-2 text-white ps-4 border-start border-bottom">
+                                    <i class="fa-solid fa-user-secret text-black mt-1"></i>
                                     <p>Officer</p>
                                 </div>
-                            </div>
                             </a>
-                        </div>
-                           <div class="collapse" id="contentId">
                             <a href="{{ route('admin.wargaTab', Crypt::encrypt('warga')) }}" style="text-decoration: none">
-                                <div class="d-flex mt-auto gap-2 text-white" style="padding-left: 30px; border-left: 2px solid white; border-bottom: 2px solid white;">
-                                <i class="fa-solid fa-users text-black mt-1"></i>
-                                <div class="">
+                                <div class="d-flex mt-auto gap-2 text-white ps-4 border-start border-bottom">
+                                    <i class="fa-solid fa-users text-black mt-1"></i>
                                     <p>Warga</p>
                                 </div>
-                            </div>
                             </a>
                         </div>
 
                         <a href="{{ route('admin.dues_category') }}" style="text-decoration: none">
-                            <div class="d-flex mt-auto gap-2 text-white">
-                                <span>
-                                    <i class="fa fa-inbox" aria-hidden="true" style="color:  #001E6C"></i>
-                                </span>
-                                <div class="">
-                                    <p>Category</p>
-                                </div>
+                            <div class="d-flex gap-2 text-white">
+                                <span><i class="fa fa-inbox" aria-hidden="true" style="color: #001E6C"></i></span>
+                                <p>Category</p>
                             </div>
                         </a>
 
                         <a href="{{ route('admin.dues_member') }}" style="text-decoration: none">
-                            <div class="d-flex mt-auto gap-2 text-white">
-                                <span>
-                                    <i class="fa fa-user-circle" aria-hidden="true" style="color:  #001E6C"></i>
-                                </span>
-                                <div class="">
-                                    <p>Member</p>
-                                </div>
+                            <div class="d-flex gap-2 text-white">
+                                <span><i class="fa fa-user-circle" aria-hidden="true" style="color: #001E6C"></i></span>
+                                <p>Member</p>
                             </div>
                         </a>
 
                         <a href="{{ route('admin.payment') }}" style="text-decoration: none">
-                            <div class="d-flex mt-auto gap-2 text-white">
-                                <span>
-                                    <i class="fa-regular fa-money-bill-1" aria-hidden="true" style="color:  #001E6C"></i>
-                                </span>
-                                <div class="">
-                                    <p>Payment</p>
-                                </div>
+                            <div class="d-flex gap-2 text-white">
+                                <span><i class="fa-regular fa-money-bill-1" aria-hidden="true" style="color: #001E6C"></i></span>
+                                <p>Payment</p>
                             </div>
                         </a>
-                        <hr>
-                           @if (Auth::user())
+
+                        <hr />
+                        @if (Auth::user())
                             <a href="{{ route('logout') }}" class="text-white" style="text-decoration: none">
-                                <i class="fa-solid fa-right-from-bracket" style="color:  #001E6C"></i> Logout</a>
+                                <i class="fa-solid fa-right-from-bracket" style="color: #001E6C"></i> Logout
+                            </a>
                         @endif
                     </div>
                 </div>
@@ -141,7 +95,8 @@
             @yield('content')
         </div>
     </div>
+
+    <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/fontawesome/js/fontawesome.js') }}"></script>
 </body>
 </html>
-<script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<script src="{{ asset('assets/fontawesome/js/fontawesome.js') }}"></script>

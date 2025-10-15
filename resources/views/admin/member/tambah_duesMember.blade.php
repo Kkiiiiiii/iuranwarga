@@ -1,7 +1,8 @@
 @extends('admin.layout')
+
 @section('content')
 <div class="container mt-5">
-    <h4>Tambah Data Dues_category</h4>
+    <h4>Tambah Data Dues_Members</h4>
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -17,21 +18,21 @@
         @csrf
 
         <div class="mb-3">
-            <label for="users_id" class="form-label">nama</label>
+            <label for="users_id" class="form-label">Nama</label>
             <select name="users_id" id="users_id" class="form-control">
-                <option value="" disabled selected>Nama Warga</option>
+                <option value="" disabled selected></option> 
                 @foreach ($Warga as $item)
                     <option value="{{ $item->id }}">
-                        {{  $item->name }}
+                        {{ $item->name }}
                     </option>
                 @endforeach
             </select>
         </div>
 
         <div class="mb-3">
-            <label for="dues_categories_id" class="form-label">period</label>
+            <label for="dues_categories_id" class="form-label">Periode</label>
             <select name="dues_categories_id" id="dues_categories_id" class="form-control">
-                <option value="" disabled selected>Periode</option>
+                <option value="" disabled selected></option>
                 @foreach ($Category as $item)
                     <option value="{{ $item->id }}">
                         {{ $item->period }}
