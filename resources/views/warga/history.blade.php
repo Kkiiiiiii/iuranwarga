@@ -12,7 +12,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
     @endif
-    <h3 class="mt-5">History Pembayaran</h3><br>
+    <h3 class="mt-5">History Pembayaran</h3>
+    <br>
     @if (!$tagihan->jumlah_tagihan)
         {{ route('home') }}
     @endif

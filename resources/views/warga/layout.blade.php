@@ -25,6 +25,12 @@
         .select2-container--default .select2-selection--single .select2-selection__arrow {
             height: 38px !important;
         }
+        .hover-scale {
+    transition: all 0.3s ease-in-out;
+    }
+    .hover-scale:hover {
+        transform: scale(1.03);
+    }
     </style>
 
     @stack('styles')
@@ -82,47 +88,23 @@
                             </div>
                         </a>
                         @endif
+                        @if (Auth::user())
+                              <a href="{{ route('logout') }}" style="text-decoration: none">
+                            <div class="d-flex mt-auto gap-2 text-white">
+                                <span>
+                                    <i class="fa-solid fa-right-from-bracket" style="color:  #001E6C"></i>
+                                </span>
+                                <div class="">
+                                    <p>Logout</p>
+                                </div>
+                            </div>
+                        </a>               
+                            @endif
                     </div>
                 </div>
             </nav>
         </div>
         <div class="col-sm-10" style="">
-            <div class="w-100">
-                <header class="navbar navbar-expand-sm bg-header py-0 mt-4" >
-                    <div class="container-fluid">
-                        <a class="navbar-brand " href="#"><img src="{{ asset('assets/foto/logoo.png') }}" class="rounded-circle" width="50" height="50"></a>
-                        <button
-                            class="navbar-toggler d-lg-none"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#collapsibleNavId"
-                            aria-controls="collapsibleNavId"
-                            aria-expanded="false"
-                            aria-label="Toggle navigation"
-                        >
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="collapsibleNavId">
-                            <form class="d-flex my-2 my-lg-0 w-100">
-                                <input
-                                    class="form-control me-sm-2 "
-                                    type="text"
-                                    placeholder="Search"
-                                />
-                                <button
-                                    class="btn btn-outline-success my-2 my-sm-0"
-                                    type="submit"
-                                >
-                                    Search
-                                </button>
-                            </form>
-                            @if (Auth::user())
-                            <a href="{{ route('logout') }}" class="btn btn-danger card-title text-bold text-center align-items-center" style="margin-left: 12px">Logout</a>
-                            @endif
-                        </div>
-                    </div>
-                </header>
-            </div>
             @yield('content')
         </div>
     </div>
