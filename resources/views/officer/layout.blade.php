@@ -12,27 +12,6 @@
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     </head>
     <body>
-        {{-- <header class="navbar navbar-expand-sm" style="background-color: #001E6C;">
-        <div class="container">
-            <a class="navbar-brand text-white" href="#"><img src="{{ asset('assets/foto/logoo.png') }}" class="rounded-circle" width="50" height="50"></a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <form class="d-flex ms-auto w-100 me-2" action="{{ route('admin-searchDuescat') }}" method="GET">
-                    <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-
-                @if (Auth::user())
-                    <a href="{{ route('logout') }}" class="btn btn-danger ms-2">Logout</a>
-                @endif
-            </div>
-        </div>
-    </header> --}}
 
         <div class="row" style="height: 100vh;">
             <div class="col-sm-2 bg-utama">
@@ -92,9 +71,13 @@
                 @yield('content')
             </div>
         </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script src="{{ asset('assets/fontawesome/js/fontawesome.js') }}"></script>
+
+    @stack('scripts')
     </body>
     </html>
-    <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{ asset('assets/fontawesome/js/fontawesome.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 

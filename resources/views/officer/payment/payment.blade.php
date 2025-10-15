@@ -61,7 +61,7 @@
 
         <div class="mb-3">
             <label for="users_id" class="form-label">nama</label>
-            <select name="users_id" id="users_id" class="form-control">
+            <select name="users_id" id="users_id" class="form-control nama-warga">
                 <option value="" disabled selected>Nama Warga</option>
                 @foreach ($Warga as $item)
                     <option value="{{ $item->users_id }}">
@@ -136,3 +136,17 @@
     </table>
 </div>
 @endsection
+@push('scripts')
+<script>
+    $(document).ready(function () {
+        $('#pay').on('shown.bs.modal', function () {
+            $('.nama-warga').select2({
+                placeholder: "Pilih Nama Warga...",
+                allowClear: true,
+                dropdownParent: $('#pay'),
+                width: '100%'
+            });
+        });
+    });
+</script>
+@endpush

@@ -9,6 +9,25 @@
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!-- Optional custom style to fix Select2 in modal -->
+    <style>
+        .select2-container {
+            z-index: 9999 !important;
+        }
+        .select2-container .select2-selection--single {
+            height: 38px !important;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 38px !important;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 38px !important;
+        }
+    </style>
+
+    @stack('styles')
 </head>
 <body>
     {{-- <header>...</header> --}}
@@ -95,8 +114,11 @@
             @yield('content')
         </div>
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="{{ asset('assets/fontawesome/js/fontawesome.js') }}"></script>
+
+    @stack('scripts')
 </body>
 </html>

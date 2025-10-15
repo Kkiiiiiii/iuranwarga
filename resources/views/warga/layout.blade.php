@@ -5,9 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Halaman - Warga</title>
-    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
+
+      <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!-- Optional custom style to fix Select2 in modal -->
+    <style>
+        .select2-container {
+            z-index: 9999 !important;
+        }
+        .select2-container .select2-selection--single {
+            height: 38px !important;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 38px !important;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 38px !important;
+        }
+    </style>
+
+    @stack('styles')
 </head>
 <body class="m-0 p-0">
     <div class="row m-0" style="height: 100vh;">
@@ -28,7 +48,7 @@
                     <div class="container-fluid d-flex justify-content-center border rounded-2">
                         <div class="container-fluid card bg-utama m-4 border-0" style="width:18rem;">
                           <img src="{{ asset('assets/foto/profile.jpg') }}" class="rounded-circle">
-                          <div class="card-body ms-2">
+                          <div class="card-body ms-0">
                             <a href="{{ route('login') }}" class="btn btn-info card-title text-bold text-center align-items-center">Sign In</a>
                           </div>
                         </div>

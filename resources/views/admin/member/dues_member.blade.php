@@ -17,80 +17,66 @@
         $no = 1;
         @endphp
 
-            <button
-                type="button"
-                class="btn btn-primary btn-md"
-                data-bs-toggle="modal"
-                data-bs-target="#pay"
-            >
-                Create Member
-            </button>
-
     <h5 class="mt-3 pb-2">Data Member</h5>
     <hr>
 
-    <div
-        class="modal fade"
-        id="pay"
-        tabindex="-1"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-
-        role="dialog"
-        aria-labelledby="modalTitleId"
-        aria-hidden="true"
+   <div class="container mt-5">
+    <button
+        type="button"
+        class="btn btn-primary btn-md"
+        data-bs-toggle="modal"
+        data-bs-target="#pay"
     >
-        <div
-            class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
-            role="document"
-        >
+        Create Member
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="pay" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalTitleId">
-                        Create Member
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title">Create Member</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="{{ route('admin.dues_memberStore') }}" method="POST">
+                        @csrf
+
+                        <div class="mb-3">
+                            <label for="users_id" class="form-label">Nama</label>
+                            <select name="users_id" id="users_id" class="form-control select2-users">
+                                <option value="" disabled selected>Pilih Warga</option>
+                                @foreach ($Warga as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="dues_categories_id" class="form-label">Periode</label>
+                            <select name="dues_categories_id" id="dues_categories_id" class="form-control select2-period">
+                                <option value="" disabled selected>Pilih Periode</option>
+                                @foreach ($Category as $item)
+                                    <option value="{{ $item->id }}">{{ $item->period }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="registration_date" class="form-label">Registration Date</label>
+                            <input type="date" name="registration_date" class="form-control">
+                        </div>
+
+                        <div class="mb-3 text-end">
+                            <button type="submit" class="btn btn-success w-100 btn-sm">SIMPAN</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        <div class="modal-body">
-        <form action="{{ route('admin.dues_memberStore') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-
-        <div class="mb-3">
-            <label for="users_id" class="form-label">nama</label>
-            <select name="users_id" id="users_id" class="form-control">
-                <option value="" disabled selected>Nama Warga</option>
-                @foreach ($Warga as $item)
-                    <option value="{{ $item->id }}">
-                        {{  $item->name }}
-                    </option>
-                @endforeach
-            </select>
         </div>
+    </div>
 
-        <div class="mb-3">
-            <label for="dues_categories_id" class="form-label">Period</label>
-            <select name="dues_categories_id" id="dues_categories_id" class="form-control">
-                <option value="" disabled selected>Periode</option>
-                @foreach ($Category as $item)
-                    <option value="{{ $item->id }}">
-                        {{ $item->period }}
-                    </option>
-                @endforeach
-            </select>
-        </div>
-
-        <div class="mb-3">
-            <label for="registration_date" class="form-label">Registration Date</label>
-            <input type="date" class="form-control" name="registration_date" id="registration_date">
-        </div>
-
-        <div class="mb-3 text-center">
-            <button type="submit" class="btn btn-success w-100 btn-sm">SIMPAN</button>
-        </div>
-    </form>
-</div>
-</div>
-</div>
 </div>
     {{-- <a href="{{ route('admin.dues_memberCreate') }}" class="btn btn-sm btn-info align-items-end">Tambah Data Member</a> --}}
     <table class="table table-striped table-hover mt-4 pb-5">
@@ -125,3 +111,26 @@
     </table>
 </div>
 @endsection
+@push('scripts')
+<script>
+    $(document).ready(function () {
+        $('#pay').on('shown.bs.modal', function () {
+            $('.select2-users').select2({
+                placeholder: "Pilih Nama Warga...",
+                allowClear: true,
+                dropdownParent: $('#pay'),
+                width: '100%'
+            });
+
+            $('.select2-period').select2({
+                placeholder: "Pilih Periode...",
+                allowClear: true,
+                dropdownParent: $('#pay'),
+                width: '100%'
+            });
+        });
+    });
+</script>
+@endpush
+
+
