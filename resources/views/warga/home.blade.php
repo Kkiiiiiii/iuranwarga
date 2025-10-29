@@ -6,7 +6,7 @@
             @if (Auth::user())
             <h1 class="fw-bold">Halo, {{ Auth::user()->name }} 👋</h1>
             @endif
-            <p class="lead">Selamat datang di <strong>IuranWarga</strong>! Di sini kamu bisa cek tagihan, bayar iuran, dan lihat riwayat pembayaran dengan mudah.</p>
+            <p class="lead">Selamat datang di <strong>IuranWarga</strong>, Di sini kamu bisa cek tagihan, bayar iuran, dan lihat riwayat pembayaran dengan mudah.</p>
             <div class="d-flex flex-wrap gap-3 mt-3">
                 <a href="" class="btn btn-light text-primary fw-semibold shadow-sm">
                      Lihat Tagihan
