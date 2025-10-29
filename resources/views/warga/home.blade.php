@@ -17,9 +17,9 @@
             </div>
         </div>
         <div class="col-md-4 text-center">
-            <img src="{{ asset('assets/foto/person.jpg') }}" 
-            class="rounded-circle img-fluid" 
-            style="width: 200px; height: 200px; object-fit: cover;" 
+            <img src="{{ asset('assets/foto/logoo.png') }}"
+            class="rounded-circle img-fluid"
+            style="width: 200px; height: 200px; object-fit: cover;"
             alt="Foto Profil">
     </div>
 </div>
